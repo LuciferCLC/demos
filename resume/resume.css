@@ -3,11 +3,18 @@
   padding: 0;
 }
 body {
+  min-width: 705px;
   font-size: 14px;
   font-family: 'Microsoft YaHei';
 }
 a {
   text-decoration: none;
+  transition: all .3s;
+  color: #fff;
+}
+ul,
+li {
+  list-style: none;
 }
 
 .aside {
@@ -15,6 +22,7 @@ a {
   left: 0;
   top: 0;
   width: 40%;
+  min-width: 285px;
   height: 100%;
   background: rgba(0,20,130,.5);
   z-index: 99;
@@ -35,14 +43,14 @@ a {
   font-size: 30px;
   font-weight: normal;
   line-height: 40px;
-  text-shadow: 3px 2px 5px rgba(0,0,0,0.2);
+  text-shadow: 3px 2px 5px rgba(0,0,0,.2);
   letter-spacing: 3px;
   margin-bottom: 10px;
 }
 .user p {
   font-weight: 200;
   line-height: 28px;
-  text-shadow: 3px 2px 10px rgba(0,0,0,0.2);
+  text-shadow: 3px 2px 10px rgba(0,0,0,.2);
   letter-spacing: 1px;
 }
 
@@ -67,6 +75,7 @@ a {
   overflow: hidden;
   margin: 100px auto 200px;
   position: relative;
+  transition: all .3s;
 }
 .user .button:before {
   content: "下载简历";
@@ -100,6 +109,26 @@ a {
   background: #fff;
   top: 0;
 }
+.nav {
+    position: absolute;
+    bottom: 5%;
+    right: 15%;
+}
+.nav:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.nav ul li {
+    display: inline-block;
+    float: left;
+    width: 60px;
+    text-align: right;
+    height: 30px;
+}
+.nav ul li a:hover {
+  color: #777;
+}
 
 .container {
   position: relative;
@@ -109,6 +138,111 @@ a {
   background: #fff;
   box-sizing: border-box;
 }
+.main {
+  padding: 50px 0;
+  border-bottom: 1px solid #ccc;
+}
+.title {
+  position: relative;
+  font-size: 24px;
+  line-height: 50px;
+  font-weight: 400;
+  color: #666;
+  letter-spacing: 3px;
+}
+.title:before {
+  content: "";
+  position: absolute;
+  left: -24px;
+  top: 20px;
+  background: #229187;
+  height: 8px;
+  width: 8px;
+}
+.info {
+  color: #666;
+  line-height: 24px;
+  margin: 10px 0;
+}
+.main h4 {
+  font-size: 18px;
+  font-weight: 500;
+  color: #229187;
+  line-height: 28px;
+}
+.main h4 span,
+.info span {
+  font-size: 16px;
+  margin-left: 10px;
+  font-weight: 200;
+}
+.skill {
+  margin-top: 30px;
+  width: 90%;
+}
+.skill li {
+  cursor: pointer;
+  position: relative;
+  height: 25px;
+  background-color: #4a4a4a;
+  color: #fff;
+  letter-spacing: 1px;
+  font: 200 12px/25px Microsoft Yahei;
+  margin-bottom: 5px;
+  z-index: 1;
+}
+.skill li span {
+  position: absolute;
+  left: 8px;
+  top: 0;
+  z-index: 3;
+  display: inline-block;
+  line-height: 25px;
+  text-transform: uppercase;
+}
+.skill .s90 {
+  width: 90%;
+}
+.skill .s70 {
+  width: 70%;
+}
+.skill .s50 {
+  width: 50%; 
+}
+.skill li:before {
+  transition: all .3s ease-in;
+  opacity: 0;
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0;
+  background: #229187;
+  z-index: 2;
+}
+.skill li:hover:before {
+  width: 100%;
+  opacity: 1;
+}
+.skill li:after {
+  position: absolute;
+  right: 10px;
+  z-index: 2;
+  color: #ccc;
+  display: inline-block;
+  line-height: 25px;
+}
+.skill li.s90:after {
+  content: "90%";
+}
+.skill li.s70:after {
+  content: "70%";
+}
+.skill li.s50:after {
+  content: "50%";
+}
 .contact a {
   display: inline-block;
   padding: 5px 8px;
@@ -116,6 +250,9 @@ a {
   border-radius: 5px;
   background: #555;
   color: #fff;
+}
+.contact a:hover {
+  background: #229187;
 }
 .contact span {
   font-family: "iconfont";
