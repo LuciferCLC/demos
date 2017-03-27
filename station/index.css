@@ -82,11 +82,11 @@ p {
 }
 @font-face {
   font-family: 'iconfont';  /* project id 263729 */
-  src: url('//at.alicdn.com/t/font_dje1k4tswgagiudi.eot');
-  src: url('//at.alicdn.com/t/font_dje1k4tswgagiudi.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_dje1k4tswgagiudi.woff') format('woff'),
-  url('//at.alicdn.com/t/font_dje1k4tswgagiudi.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_dje1k4tswgagiudi.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_5zsezow3v2cvj9k9.eot');
+  src: url('//at.alicdn.com/t/font_5zsezow3v2cvj9k9.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_5zsezow3v2cvj9k9.woff') format('woff'),
+  url('//at.alicdn.com/t/font_5zsezow3v2cvj9k9.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_5zsezow3v2cvj9k9.svg#iconfont') format('svg');
 }
 body span {
 	display: inline-block;
@@ -197,6 +197,22 @@ header a:hover {
 }
 #portfolio ul li a img {
 	width: 360px;
+}
+#portfolio ul li a .portfolio-hover {
+	position: absolute;
+	width: 360px;
+    height: 260px;
+    opacity: 0;
+    transition: all .3s;
+}
+#portfolio ul li a .portfolio-hover span {
+	color: #fff;
+	font-size: 80px;
+	margin-top: 70px;
+}
+#portfolio ul li a .portfolio-hover:hover {
+	background: #fed136;
+	opacity: .9;
 }
 #portfolio ul li .caption {
 	padding: 25px;
@@ -336,6 +352,9 @@ aside ul li a img {
     padding: 20px 40px;
     cursor: pointer;
 }
+#contactForm .submit:hover {
+	background: #fec136;
+}
 footer {
 	padding: 25px 0;
     text-align: center;
@@ -364,5 +383,12 @@ footer .right li {
 	margin-left: 15px;
 }
 footer .right a {
+	color: #fec503;
+}
+footer .right a:hover {
+	text-decoration: underline;
+}
+#team ul li ul li a span:hover,
+footer .mid li a span:hover {
 	color: #fec503;
 }
