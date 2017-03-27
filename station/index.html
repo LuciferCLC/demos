@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <head>
 	<meta charset="UTF-8">
-	<title>网站练习</title>
+	<title>PRACTICE</title>
 	<link rel="stylesheet" href="./index.css">
 </head>
 <body>
 	<nav>
-		<div>
-			<img src="" alt="">
-			<ul>
+		<div class="container clearfix">
+			<a class="logo">
+				<img src="./images/logo.png" alt>
+			</a>
+			<ul class="navbar clearfix">
 				<li><a href="#">SERVICES</a></li>
 				<li><a href="#">PORTFOLIO</a></li>
 				<li><a href="#">ABOUT</a></li>
@@ -18,32 +20,253 @@
 		</div>
 	</nav>
 	<header>
-		<div>
+		<div class="container">
 			<h3>Welcome To Our Studio!</h3>
         	<h1>IT'S NICE TO MEET YOU</h1>
         	<a href="#">TELL ME MORE</a>
         </div>
 	</header>
-	<section>
-		<div></div>
+	<section id="services">
+		<div class="container">
+			<div class="row">
+				<h2>SERVICES</h2>
+				<h3>Lorem ipsum dolor sit amet consectetur.</h3>
+			</div>
+			<ul class="row clearfix">
+				<li>
+					<span>&#xe61e;</span>
+					<h4>E-Commerce</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+				</li>
+				<li>
+					<span>&#xe61d;</span>
+					<h4>Responsive Design</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+				</li>
+				<li>
+					<span>&#xe621;</span>
+					<h4>Web Security</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+				</li>
+			</ul>
+		</div>
 	</section>
-	<section>
-		<div></div>
+	<section id="portfolio">
+		<div class="container">
+			<div class="row">
+				<h2>PORTFOLIO</h2>
+				<h3>Lorem ipsum dolor sit amet consectetur.</h3>
+			</div>
+			<ul class="row clearfix">
+				<li>
+					<a href="#">
+						<img src="./images/roundicons.png" alt>
+					</a>
+					<div class="caption">
+						<h4>Round Icons</h4>
+						<p>Graphic Design</p>
+					</div>
+				</li>
+				<li>
+					<a href="#">
+						<img src="./images/startup-framework.png" alt>
+					</a>
+					<div class="caption">
+						<h4>Startup Framework</h4>
+						<p>Website Design</p>
+					</div>					
+				</li>
+				<li>
+					<a href="#">
+						<img src="./images/treehouse.png" alt>
+					</a>
+					<div class="caption">
+						<h4>Treehouse</h4>
+						<p>Website Design</p>
+					</div>					
+				</li>
+				<li>
+					<a href="#">
+						<img src="./images/golden.png" alt>
+					</a>
+					<div class="caption">
+						<h4>Golden</h4>
+						<p>Website Design</p>
+					</div>					
+				</li>
+				<li>
+					<a href="#">
+						<img src="./images/escape.png" alt>
+					</a>
+					<div class="caption">
+						<h4>Escape</h4>
+						<p>Website Design</p>
+					</div>					
+				</li>
+				<li>
+					<a href="#">
+						<img src="./images/dreams.png" alt>
+					</a>
+					<div class="caption">
+						<h4>Dreams</h4>
+						<p>Website Design</p>
+					</div>					
+				</li>
+			</ul>
+		</div>
 	</section>
-	<section>
-		<div></div>
+	<section id="about">
+		<div class="container">
+			<div class="row">
+				<h2>ABOUT</h2>
+				<h3>Lorem ipsum dolor sit amet consectetur.</h3>
+			</div>
+			<ul class="row">
+				<li>
+					<img src="./images/1.jpg" class="timeline" alt>
+					<div class="left">
+						<h4>
+							2009-2011
+						</h4>
+						<h4>
+							Our Humble Beginnings
+						</h4>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+					</div>
+				</li>
+				<li>
+					<img src="./images/2.jpg" class="timeline" alt>
+					<div class="right">
+						<h4>
+							MARCH 2011
+						</h4>
+						<h4>
+							An Agency is Born
+						</h4>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+					</div>
+				</li>
+				<li>
+					<img src="./images/3.jpg" class="timeline" alt>
+					<div class="left">
+						<h4>
+							DECEMBER 2012
+						</h4>
+						<h4>
+							Transition to Full Service
+						</h4>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+					</div>
+				</li>
+				<li>
+					<img src="./images/4.jpg" class="timeline" alt>
+					<div class="right">
+						<h4>
+							JULY 2014
+						</h4>
+						<h4>
+							Phase Two Expansion
+						</h4>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+					</div>
+				</li>
+				<li class="last">
+					<h4 class="timeline">
+						BE PART
+						<br>
+						OF OUR
+						<br> 
+						STORY!	
+					</h4>
+				</li>
+			</ul>
+		</div>
 	</section>
-	<section>
-		<div></div>
+	<section id="team">
+		<div class="container">
+			<div class="row">
+				<h2>OUR AMAZING TEAM</h2>
+				<h3>Lorem ipsum dolor sit amet consectetur.</h3>
+			</div>
+			<ul class="row clearfix">
+				<li class="team-member">
+					<img src="./images/5.jpg" alt>
+					<h4>Kay Garland</h4>
+					<p>Lead Designer</p>
+					<ul class="clearfix">
+						<li><a href="#"><span>&#xe6e6;</span></a></li>
+						<li><a href="#"><span>&#xe622;</span></a></li>
+						<li><a href="#"><span>&#xe608;</span></a></li>
+					</ul>
+				</li>
+				<li class="team-member">
+					<img src="./images/6.jpg" alt>
+					<h4>Larry Parker</h4>
+					<p>Lead Marketer</p>
+					<ul class="clearfix">
+						<li><a href="#"><span>&#xe6e6;</span></a></li>
+						<li><a href="#"><span>&#xe622;</span></a></li>
+						<li><a href="#"><span>&#xe608;</span></a></li>
+					</ul>
+				</li>
+				<li class="team-member">
+					<img src="./images/7.jpg" alt>
+					<h4>Diana Pertersen</h4>
+					<p>Lead Developer</p>
+					<ul class="clearfix">
+						<li><a href="#"><span>&#xe6e6;</span></a></li>
+						<li><a href="#"><span>&#xe622;</span></a></li>
+						<li><a href="#"><span>&#xe608;</span></a></li>
+					</ul>
+				</li>
+			</ul>
+			<div class="last row">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+			</div>
+		</div>
 	</section>
-	<section>
-		<div></div>
-	</section>
-	<section>
-		<div></div>
+	<aside>
+		<ul class="container clearfix">
+			<li><a href="#"><img src="./images/envato.jpg" alt></a></li>
+			<li><a href="#"><img src="./images/designmodo.jpg" alt></a></li>
+			<li><a href="#"><img src="./images/themeforest.jpg" alt></a></li>
+			<li><a href="#"><img src="./images/creative-market.jpg" alt></a></li>
+		</ul>
+	</aside>
+	<section id="contact">
+		<div class="container">
+			<div class="row">
+				<h2>CONTACT US</h2>
+				<h3>Lorem ipsum dolor sit amet consectetur.</h3>
+			</div>
+			<div class="row">
+				<form id="contactForm" name="sentMessage">
+					<ul>
+						<li><input type="text" placeholder="YOUR NAME *"></li>
+						<li><input type="text" placeholder="YOUR EMAIL *"></li>
+						<li><input type="text" placeholder="YOUR PHONE *"></li>
+					</ul>
+					<div class="message clearfix">
+						<textarea cols="30" rows="10" placeholder="YOUR MESSAGE *"></textarea>
+					</div>
+					<input class="submit" type="submit" value="SEND MESSAGE">
+				</form>
+			</div>
+		</div>
 	</section>
 	<footer>
-		
+		<div class="container clearfix">
+			<p>Copyright © Your Website 2014</p>
+			<ul class="mid">
+				<li><a href="#"><span>&#xe6e6;</span></a></li>
+				<li><a href="#"><span>&#xe622;</span></a></li>
+				<li><a href="#"><span>&#xe608;</span></a></li>
+			</ul>
+			<ul class="right">
+				<li><a href="#">Privacy Policy</a></li>
+				<li><a href="#">Terms of Use</a></li>
+			</ul>
+		</div>
 	</footer>
 </body>
 </html>

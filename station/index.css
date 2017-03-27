@@ -1,6 +1,366 @@
+/*css reset*/
+* {
+	box-sizing: border-box;
+}
+body,
+div,
+img,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+li,
+ol,
+dl,
+dt,
+dd {
+    margin: 0;
+    padding: 0;
+}
 body {	
  	font-size: 14px;
- 	line-height: 1.42857143;
  	color: #333;
  	background-color: #fff;
+}
+a {
+	display: block;
+	text-decoration: none;
+}
+section {
+	padding: 150px 0;
+}
+li {
+	float: left;
+	list-style: none;
+}
+h4 {
+	font-size: 18px;
+	font-weight: 700;
+	margin-bottom: 10px;
+}
+p {
+	color: #777;
+	line-height: 1.75;
+}
+
+.clearfix:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.container {
+	width: 1170px;
+	padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.row {
+	margin-right: -15px;
+    margin-left: -15px;
+    text-align: center;
+}
+.row h2 {
+	font-size: 40px;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+.row h3 {
+	font-size: 16px;
+    font-style: italic;
+    font-weight: 400;
+    margin-bottom: 75px;
+    color: #777;
+}
+::selection {
+    background: #fed136;
+}
+@font-face {
+  font-family: 'iconfont';  /* project id 263729 */
+  src: url('//at.alicdn.com/t/font_dje1k4tswgagiudi.eot');
+  src: url('//at.alicdn.com/t/font_dje1k4tswgagiudi.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_dje1k4tswgagiudi.woff') format('woff'),
+  url('//at.alicdn.com/t/font_dje1k4tswgagiudi.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_dje1k4tswgagiudi.svg#iconfont') format('svg');
+}
+span {
+	display: inline-block;
+	font-family: "iconfont"; 
+}
+
+nav {
+	width: 100%;
+	background: #222;
+    padding: 10px 0;
+    position: fixed;
+    z-index: 999;
+}
+.logo {
+	height: 50px;
+	line-height: 20px;
+	float: left;
+	margin-left: -15px;
+    padding: 15px 15px;
+}
+.navbar {
+	float: right;
+	margin-right: -15px;
+	margin-top: 5px;
+	padding-left: 0;
+    
+}
+.navbar li a {
+    padding: 10px 15px;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 20px;
+    color: #fff;
+}
+.navbar li a:hover {
+	color: #fed136;
+}
+header {
+	height: 757px;
+	background: url(./images/header-bg.jpg) no-repeat center center;
+    background-size: cover;
+    text-align: center;
+    color: #fff;
+}
+header .container {
+	padding-top: 300px;
+    padding-bottom: 200px;
+}
+header h3 {
+	font-style: italic;
+    font-size: 40px;
+    line-height: 40px;
+    margin-bottom: 25px;
+    font-weight: normal;
+}
+header h1 {
+    font-weight: 700;
+    font-size: 75px;
+    line-height: 75px;
+    margin-bottom: 50px;
+}
+header a {
+	display: inline-block;
+	color: #fff;
+    background-color: #fed136;
+    font-weight: 700;
+    border-radius: 3px;
+    font-size: 18px;
+    padding: 20px 40px;
+}
+header a:hover {
+	background-color: #fec503;
+}
+#services ul li {
+	width: 33.33333333%;
+	padding-right: 15px;
+    padding-left: 15px;
+}
+#services ul li span {
+    width: 100px;
+    height: 100px;
+    font-size: 4em;
+    line-height: 1.7;
+    border-radius: 100%;
+    background: #fed136;
+}
+#services ul li h4 {
+	margin: 15px 0;
+}
+#services ul li p {
+	color: #777;
+	margin-bottom: 10px;
+}
+#portfolio {
+	background-color: #f7f7f7;
+}
+#portfolio ul li {
+	margin-bottom: 30px;
+	width: 33.33333333%;
+	padding-right: 15px;
+    padding-left: 15px;
+}
+#portfolio ul li a {
+	height: 260px;
+}
+#portfolio ul li a img {
+	width: 360px;
+}
+#portfolio ul li .caption {
+	padding: 25px;
+	background: #fff;
+}
+#portfolio ul li .caption p {
+	font-style: italic;
+    font-size: 16px;
+	color: #777;
+}
+#about ul {
+	position: relative;
+}
+#about ul:before {
+	content: "";
+	top: 0;
+    bottom: 0;
+    position: absolute;
+    width: 2px;
+    background-color: #f1f1f1;
+    left: 50%;
+    margin-left: -1px;
+}
+#about ul li {
+	height: 170px;
+	margin-bottom: 130px;
+	float: none;
+}
+#about ul li.last {
+	margin-bottom: 0;
+}
+#about ul li .timeline {
+	width: 170px;
+    height: 170px;
+    border: 7px solid #f1f1f1;
+    border-radius: 100%;
+    position: absolute;
+    left: 50%;
+    margin-left: -85px;
+}
+#about ul li div {
+	width: 41%;
+}
+#about ul li .left {
+    float: left;
+    text-align: right;
+    padding: 0 20px 20px 100px;
+}
+#about ul li .right {
+	float: right;
+    text-align: left;
+    padding: 0 100px 20px 20px;
+}
+#about ul li h4.timeline {
+	background: #fed136;
+	padding-top: 40px;
+	color: #fff;
+}
+#team {
+	background: #f1f1f1;
+}
+#team ul .team-member {
+	width: 33.33333333%;
+	margin-bottom: 50px;
+}
+#team ul li img {
+	border: 7px solid #fff;
+	border-radius: 50%;
+	margin: 0 auto;
+}
+#team ul li h4 {
+	margin-top: 25px;
+    margin-bottom: 0;
+}
+#team ul li p {
+	margin: 0 0 10px;
+}
+#team ul li ul {
+	text-align: center;
+	padding-left: 165px;
+}
+#team ul li ul li {
+	display: inline-block;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+#team .last {
+	width: 66.66666667%;
+	margin-left: 16.66666667%;
+}
+aside ul li {
+	width: 25%;
+}
+aside ul li a img {
+	margin: 50px auto;
+}
+#contact {
+	background: url(./images/map-image.png) no-repeat center;
+	background-color: #222;
+}
+#contact h2 {
+	color: #fff;
+}
+#contactForm ul,
+#contactForm .message {
+	width: 50%;
+	float: left;
+	padding-right: 15px;
+    padding-left: 15px;
+}
+#contactForm ul li {
+	float: none;
+	margin-bottom: 25px;
+
+}
+#contactForm ul li input {
+	width: 100%;
+	padding: 22px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	color: #555;
+}
+.message textarea {
+	height: 235px;
+	width: 100%;
+	padding: 20px;
+	border-radius: 4px;
+	margin-bottom: 25px;
+}
+#contactForm .submit {
+	color: #fff;
+    background-color: #fec503;
+    border: none;
+    font-weight: 700;
+    border-radius: 3px;
+    font-size: 18px;
+    padding: 20px 40px;
+    cursor: pointer;
+}
+footer {
+	padding: 25px 0;
+    text-align: center;
+    display: block;
+}
+footer p {
+	width: 33.333333%;
+	color: #333;
+	display: inline-block;
+	float: left;
+}
+footer .mid {
+	width: 33.333333%;
+	padding-left: 160px;
+	float: left;
+}
+footer .mid li {
+	margin-right: 15px;
+}
+footer .right {
+	width: 33.333333%;
+	float: left;
+	padding-left: 70px;
+}
+footer .right li {
+	margin-left: 15px;
+}
+footer .right a {
+	color: #fec503;
 }
