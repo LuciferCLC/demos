@@ -88,7 +88,7 @@ p {
   url('//at.alicdn.com/t/font_dje1k4tswgagiudi.ttf') format('truetype'),
   url('//at.alicdn.com/t/font_dje1k4tswgagiudi.svg#iconfont') format('svg');
 }
-span {
+body span {
 	display: inline-block;
 	font-family: "iconfont";
 	font-size: 20px;
