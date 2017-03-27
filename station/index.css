@@ -276,7 +276,7 @@ header a:hover {
 }
 #team ul li ul {
 	text-align: center;
-	padding-left: 165px;
+	padding-left: 100px;
 }
 #team ul li ul li {
 	display: inline-block;
@@ -349,7 +349,7 @@ footer p {
 }
 footer .mid {
 	width: 33.333333%;
-	padding-left: 160px;
+	padding-left: 100px;
 	float: left;
 }
 footer .mid li {
