@@ -90,7 +90,8 @@ p {
 }
 span {
 	display: inline-block;
-	font-family: "iconfont"; 
+	font-family: "iconfont";
+	font-size: 20px;
 }
 
 nav {
@@ -352,10 +353,6 @@ footer .mid {
 }
 footer .mid li {
 	margin-right: 15px;
-}
-footer .mid li span {
-	font-size: 20px;
-	color: #000;
 }
 footer .right {
 	width: 33.333333%;
