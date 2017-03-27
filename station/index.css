@@ -353,6 +353,10 @@ footer .mid {
 footer .mid li {
 	margin-right: 15px;
 }
+footer .mid li span {
+	font-size: 20px;
+	color: #000;
+}
 footer .right {
 	width: 33.333333%;
 	float: left;
