@@ -1,0 +1,352 @@
+/*css reset*/
+body,
+div,
+img,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+li,
+ol,
+dl,
+dt,
+dd {
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+ol {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+/*common css*/
+.clearfix:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+/*page css*/
+* {
+	    font-family: "微软雅黑", "Microsoft YaHei", Helvetica, Tahoma, StSun, "宋体", SimSun, sans-serif;
+}
+html,
+body {
+	height: 100%;
+	background: #000;
+}
+
+#header {
+	height: 683px;
+	background: url(./images/img_1.jpg) no-repeat top center;
+	overflow: hidden;
+}
+
+.navbar {
+	width: 1200px;
+    height: 70px;
+    border: 1px solid #422d24;
+    margin: 44px auto;
+    background: url(./images/bg_nav.jpg) no-repeat top center;
+    background-size: 100% 100%;
+    box-shadow: 0 0 10px rgba(0,0,0,.7);
+    position: relative;
+}
+.navbar li {
+	width: 160px;
+    float: left;
+    height: 70px;
+    border-left: 1px solid #291b16;
+    border-right: 1px solid #3f2a22;
+    text-align: center;
+}
+.navbar li.logo {
+	width: 226px;
+}
+.navbar li.last {
+	border-right: none;
+}
+.navbar li a {
+	color: #f8b700;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 70px;
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+.navbar li a:hover {
+	color: #fff;
+}
+.navbar li.logo a{
+	height: 153px;
+	width: 235px;
+    position: absolute;
+    left: 50%;
+    top: -41px;
+    margin-left: -117px;
+    overflow: hidden;
+    background: url(./images/logo.png) no-repeat top center;
+}
+.corner {
+	height: 70px;
+    width: 87px;
+	position: absolute;
+	left: 50%;
+	top: 108px;
+    margin-left: 46px;
+	background: url(./images/corner.png) no-repeat top center;
+    z-index: 99;
+}
+#content {
+	height: 340px;
+    background: url(./images/mid-bg.jpg) no-repeat top center;
+    border-bottom: 1px solid #16110e;
+}
+.banner {
+	padding-top: 30px;
+    width: 1202px;
+    margin: 0 auto;
+}
+.banner li {
+	width: 290px;
+    float: left;
+    margin-right: 14px;
+}
+.banner li.last {
+	margin-right: 0;
+}
+.banner li a {
+	width: 290px;
+	height: 216px;
+    display: block;
+    border-bottom: 1px solid #45300f;
+    transition: all .5s ease 0s;
+}
+.banner li a:hover {
+	transform: translateY(-10px);
+}
+.banner li a:hover h3 {
+	color: #fff;
+}
+.banner li a h3 {
+	height: 68px;
+    background: #241712;
+    background: rgba(41,26,20,.8);
+    line-height: 68px;
+    color: #f8b700;
+    font-size: 18px;
+    text-align: center;
+    font-weight: 700;
+    border-bottom: 1px solid #45300f;
+    transition: all .3s ease 0s;
+}
+.banner li a img {
+	border-top: 1px solid #120b09;
+    border-bottom: 1px solid #120b09;
+    height: 145px;
+    width: 290px;
+}
+#footer {
+	margin: 0;
+    padding: 0;
+    width: auto;
+    line-height: 20px;
+}
+#footer a {
+	display: inline-block;
+}
+.contact {
+    width: 1000px;
+    position: relative;
+    left: 50%;
+    margin-left: -500px;
+    color: #fff;
+    z-index: 100;
+    padding: 50px 0;
+}
+.contact a,
+.contact p {
+	font-size: 14px;
+    color: #b3b3b3;
+    line-height: 20px;
+}
+.contact p.cs {
+	float: left;
+}
+.contact .cs a {
+	margin-right: 37px;
+    vertical-align: middle;
+}
+.contact .cs a:hover {
+	color: #fff;
+}
+.contact .cs a .icon_1{
+	background: url(./images/f-business.png) no-repeat -6px -7px;
+    width: 19px;
+    height: 19px;
+    display: inline-block;
+    position: relative;
+    top: 5px;
+    margin-right: 10px;
+}
+.contact .cs a .icon_2{
+	background: url(./images/f-business.png) no-repeat -36px -8px;
+    width: 19px;
+    height: 19px;
+    display: inline-block;
+    position: relative;
+    top: 6px;
+    margin-right: 10px;
+}
+.contact .cs a .icon_3{
+	background: url(./images/f-business.png) no-repeat -8px -32px;
+    width: 19px;
+    height: 19px;
+    display: inline-block;
+    position: relative;
+    top: 4px;
+    margin-right: 10px;
+}
+.contact .co {
+	float: right;
+	margin-right: 50px;
+	color: #fff;
+    font-size: 14px;
+}
+.contact .co .intel {
+    width: 36px;
+    height: 26px;
+	background: url(./images/business-logo-wow.png) no-repeat 0 0;
+    vertical-align: middle;
+}
+.contact .co .nvidia {
+    width: 95px;
+    height: 26px;
+	background: url(./images/business-logo-wow.png) no-repeat -36px 0;
+    vertical-align: middle;
+}
+.contact .co .apply {
+    width: 14px;
+    height: 14px;
+	background: #241101;
+    border: 1px solid #2d1702;
+    color: #ac771f;
+    margin: 0 0 0 13px;
+    padding-top: 0;
+    position: relative;
+    top: 3px;
+    cursor: pointer;
+}
+.contact .co .apply .line-x {
+	width: 10px;
+    height: 2px;
+    margin: -1px 0 0 -5px;
+    position: absolute;
+    display: block;
+    background: #ac771f;
+    top: 50%;
+    left: 50%;
+}
+.contact .co .apply .line-y {
+	width: 2px;
+    height: 10px;
+    margin: -5px 0 0 -1px;
+    position: absolute;
+    display: block;
+    background: #ac771f;
+    top: 50%;
+    left: 50%;
+}
+.contact .co .apply:hover .line-x,
+.contact .co .apply:hover .line-y{
+	background: #fff;
+}
+.cprt {
+	text-align: left;
+    width: 1000px;
+    margin: 0 auto 8px;
+    padding-top: 40px;
+    position: relative;
+}
+.cprt .logo_bz {
+	width: 140px;
+    height: 80px;
+	display: inline-block;
+    background: url(./images/logo_blizzard.png) no-repeat 0 0;
+    vertical-align: top;
+    overflow: hidden;
+}
+.cprt .logo_ne {
+	width: 125px;
+    height: 38px;
+	display: inline-block;
+    background: url(./images/logo_ne.png) no-repeat 0 0;
+    margin: 0 0 0 20px;
+    vertical-align: top;
+    overflow: hidden;
+    position: relative;
+    top: 39px;
+}
+.cprt .info {
+    width: 640px;
+    display: inline-block;
+    text-align: left;
+    padding: 0 0 0 60px;
+    vertical-align: middle;
+    position: relative;
+}
+.cprt .info ul {
+	margin-left: -10px;
+    padding-bottom: 5px;
+}
+.cprt .info ul li {
+	float: left;
+    color: #ccc;
+}
+.cprt .info ul li a {
+	padding: 0 12px;
+	font-size: 14px;
+    color: rgba(255,255,255,.7);
+    line-height: 20px;
+    margin: 0;
+}
+.cprt .info ul li a:hover {
+	color: #fff;
+}
+.cprt .info p,
+.cprt .info p a {
+    font-size: 12px;
+    color: #4d4d4d;
+    color: rgba(255,255,255,.3);
+}
+.cprt .info p a:hover {
+	color: #fff;
+}
+.cprt .info .integrity {
+	padding: 8px 0;
+}
+.cprt .info .integrity a {
+	margin-right: 15px;
+    vertical-align: middle;
+}
+.tips {
+	width: 90%;
+	text-align: center;
+    border-top: 1px solid #1a1a1a;
+    margin: 40px auto 0;
+    padding: 20px;
+}
+.tips p {
+	color: rgba(255,255,255,.3);
+    font-size: 12px;
+}
