@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>Modal</title>
+	<link rel="stylesheet" href="./modal.css">
+</head>
+<body>
+	<button class="btn">点我</button>
+	<div id="container">
+		<div class="header clearfix">
+			<h3>我是标题1</h3>
+			<span class="close">x</span>
+		</div>
+		<div class="mid">
+			<p>我是内容1</p>
+			<p>我是内容1</p>
+		</div>
+		<div class="footer">
+			<span class="close">取消</span>
+			<span>确定</span>
+		</div>
+	</div>
+
+	<script>
+		var btn = document.querySelector('.btn');
+		var con = document.getElementById('container');
+		btn.addEventListener('click', function(e){
+			e.stopPropagation();
+			con.style.display = 'block';
+			document.body.style.backgroundColor = '#999';
+		}, false);
+		con.addEventListener('click', function(e){
+			e.stopPropagation();
+			if(e.target.classList.contains('close')){
+				con.style.display = 'none';
+				document.body.style.backgroundColor = '#fff';
+			}
+		}, false);
+		document.addEventListener('click', function(e){
+			con.style.display = 'none';
+			document.body.style.backgroundColor = '#fff';
+		}, false);
+	</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>Tab 切换</title>
+	<link rel="stylesheet" href="./tab_2.css">
+</head>
+<body>
+	<div id="container">
+		<ul class="nav clearfix">
+			<li value="0" class="act">tab1</li>
+			<li value="1">tab2</li>
+			<li value="2">tab3</li>
+		</ul>
+		<ul class="main clearfix">
+			<li class="act">内容1</li>
+			<li>内容2</li>
+			<li>内容3</li>
+		</ul>
+	</div>
+
+	<script>
+		var nav = document.querySelector('.nav');
+		var main = document.querySelector('.main');
+		nav.addEventListener('click', function(e){
+			if(e.target.tagName.toLowerCase() == 'li'){
+				for(var i = 0; i < nav.children.length; i++){
+					nav.children[i].className = '';
+					main.children[i].className = '';
+				}
+				e.target.classList.add('act');
+				main.children[e.target.value].className = 'act';
+			}
+		}, false);
+	</script>
+</body>
+</html>

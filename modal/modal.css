@@ -1,0 +1,46 @@
+* {
+	box-sizing: border-box;
+}
+span {
+	cursor: pointer;
+}
+.clearfix:after {
+	content: '';
+	clear: both;
+	display: block;
+}
+
+#container {
+	width: 300px;
+	height: 200px;
+	border: 1px solid #aaa;
+	border-radius: 3px;
+	background: #fff;
+	margin: 10% auto;
+	display: none;
+}
+.header {
+	width: 100%;
+	padding: 5px 10px;
+	border-bottom: 1px solid #aaa;
+}
+.header h3 {
+	font-size: 18px;
+	font-weight: normal;
+	margin: 0;
+	float: left;
+}
+.header span {
+	font-size: 18px;
+	font-weight: bold;
+	float: right;
+}
+.mid {
+	width: 100%;
+	padding: 20px 10px;
+	border-bottom: 1px solid #eee;	
+}
+.footer {
+	float: right;
+	padding: 5px 10px;
+}
