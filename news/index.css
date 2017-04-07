@@ -1,0 +1,29 @@
+* {
+	margin: 0 auto;
+	padding: 0;
+}
+li {
+	width: 95%;
+	border: 1px solid #bbb;
+	border-radius: 2px;
+	margin-top: 15px;
+	padding: 10px;
+	list-style: none;
+}
+li:hover {
+	background: #080;
+	color: #fff;
+	cursor: pointer;
+}
+a{
+    width: 80px;
+	height: 40px;
+	line-height: 40px;
+	color: #e27272;
+	text-align: center;
+	display: block;
+	border:  1px solid #e27272;
+	border-radius: 3px;
+	margin: 10px auto;
+	text-decoration:none;
+}
