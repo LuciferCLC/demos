@@ -87,6 +87,12 @@
     		$(this).find('.title').css('color','#fff');
     		$(this).find('.panel').hide();
     	});
+    	$('.panel').on('mouseenter', 'li', function(){
+    		$(this).find('a').css('color','#b00');
+    	});
+    	$('.panel').on('mouseleave', 'li', function(){
+    		$(this).find('a').css('color','#000');
+    	});
     </script>
 </body>
 </html>
