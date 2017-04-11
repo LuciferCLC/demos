@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>添加</title>
+	<link rel="stylesheet" href="./add.css">
+</head>
+<body>
+	<div id="container">
+		<h1 class="title">珠宝首饰</h1>
+		<ul class="ct clearfix">
+			<li class="prod">
+				<div class="hover"><a class="btn" href="javascript:;">立即抢购</a></div>
+				<a href="javascript:;">
+					<img src="./img/ring.jpg">
+					<p>镶钻戒指</p>
+					<p class="price">￥1999.00</p>
+				</a>
+			</li>
+			<li class="prod">
+				<div class="hover"><a class="btn" href="javascript:;">立即抢购</a></div>
+				<a href="javascript:;">
+					<img src="./img/ring.jpg">
+					<p>镶钻戒指</p>
+					<p class="price">￥1999.00</p>
+				</a>
+			</li>
+			<li class="prod">
+				<div class="hover"><a class="btn" href="javascript:;">立即抢购</a></div>
+				<a href="javascript:;">
+					<img src="./img/ring.jpg">
+					<p>镶钻戒指</p>
+					<p class="price">￥1999.00</p>
+				</a>
+			</li>
+			<li class="prod">
+				<div class="hover"><a class="btn" href="javascript:;">立即抢购</a></div>
+				<a href="javascript:;">
+					<img src="./img/ring.jpg">
+					<p>镶钻戒指</p>
+					<p class="price">￥1999.00</p>
+				</a>
+			</li>
+			<li class="prod">
+				<div class="hover"><a class="btn" href="javascript:;">立即抢购</a></div>
+				<a href="javascript:;">
+					<img src="./img/ring.jpg">
+					<p>镶钻戒指</p>
+					<p class="price">￥1999.00</p>
+				</a>
+			</li>
+			<li class="prod">
+				<div class="hover"><a class="btn" href="javascript:;">立即抢购</a></div>
+				<a href="javascript:;">
+					<img src="./img/ring.jpg">
+					<p>镶钻戒指</p>
+					<p class="price">￥1999.00</p>
+				</a>
+			</li>
+		</ul>
+		<a class="btn-add" href="javascript:;">添加</a>
+	</div>
+	
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script>
+		$('.ct').on('mouseenter', '.prod',function(){
+			$(this).find('.hover').addClass('show');
+		});
+		$('.ct').on('mouseleave', '.prod',function(){
+			$(this).find('.hover').removeClass('show');
+		});
+		$('.btn-add').on('click', function(){
+			var obj = '<li class="prod"><div class="hover"><a class="btn" href="javascript:;">立即抢购</a></div><a href="javascript:;"><img src="./img/hz.jpg"><p>黄金猴头</p><p class="price">￥999.00</p></a></li>';
+			for(var i =0; i < 3; i++) {
+				$('.ct').append(obj);
+			}
+		});
+	</script>
+</body>
+</html>

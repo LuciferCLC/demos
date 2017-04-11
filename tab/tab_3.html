@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>二级菜单</title>
+	<link rel="stylesheet" href="./tab_3.css">
+</head>
+<body>
+	<ul class="nav-aside">
+		<li class="category">
+			<a class="title" href="javascript:;">手机数码</a>
+			<span class="icon">></span>
+			<i></i>
+			<ul class="panel">
+				<li><a href="javascript:;">键盘</a></li>
+				<li><a href="javascript:;">专业单反</a></li>
+				<li><a href="javascript:;">硬盘盒</a></li>
+				<li><a href="javascript:;">固态硬盘</a></li>
+				<li><a href="javascript:;">移动电源</a></li>
+				<li><a href="javascript:;">手机</a></li>
+				<li><a href="javascript:;">贴膜</a></li>
+				<li><a href="javascript:;">自拍杆</a></li>
+				<li><a href="javascript:;">蓝牙耳机</a></li>
+			</ul>
+		</li>
+		<li class="category">
+			<a class="title" href="javascript:;">家电</a>
+			<span class="icon">></span>
+			<i></i>
+			<ul class="panel">
+				<li><a href="javascript:;">洗衣机</a></li>
+				<li><a href="javascript:;">平板电视</a></li>
+				<li><a href="javascript:;">冰箱</a></li>
+				<li><a href="javascript:;">电热水器</a></li>
+				<li><a href="javascript:;">空调</a></li>
+				<li><a href="javascript:;">油烟机</a></li>
+			</ul>
+		</li>
+		<li class="category">
+			<a class="title" href="javascript:;">运动户外</a>
+			<span class="icon">></span>
+			<i></i>
+			<ul class="panel">
+				<li><a href="javascript:;">跑步鞋</a></li>
+				<li><a href="javascript:;">球服</a></li>
+				<li><a href="javascript:;">短袖T恤</a></li>
+				<li><a href="javascript:;">运动长裤</a></li>
+				<li><a href="javascript:;">套头衫</a></li>
+			</ul>
+		</li>
+		<li class="category">
+			<a class="title" href="javascript:;">珠宝配饰</a>
+			<span class="icon">></span>
+			<i></i>
+			<ul class="panel">
+				<li><a href="javascript:;">黄金首饰</a></li>
+				<li><a href="javascript:;">翡翠吊坠</a></li>
+				<li><a href="javascript:;">钻戒</a></li>
+				<li><a href="javascript:;">珍珠项链</a></li>
+				<li><a href="javascript:;">和田玉</a></li>
+				<li><a href="javascript:;">施华洛</a></li>
+			</ul>
+		</li>
+		<li class="category">
+			<a class="title" href="javascript:;">生活服务</a>
+			<span class="icon">></span>
+			<i></i>
+			<ul class="panel">
+				<li><a href="javascript:;">充值中心</a></li>
+				<li><a href="javascript:;">淘票票</a></li>
+				<li><a href="javascript:;">公益</a></li>
+				<li><a href="javascript:;">保险</a></li>
+			</ul>
+		</li>
+	</ul>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+    	$('.category').on('mouseenter', function(){
+    		$(this).css('background','#fff');
+    		$(this).find('i').css({'z-index':'2','display':'block'});
+    		$(this).find('.title').css('color','#000');
+    		$(this).find('.panel').show();
+    	});
+    	$('.category').on('mouseleave', function(){
+    		$(this).css('background','#b00');
+    		$(this).find('i').css({'z-index':'0','display':'none'});
+    		$(this).find('.title').css('color','#fff');
+    		$(this).find('.panel').hide();
+    	});
+    </script>
+</body>
+</html>
