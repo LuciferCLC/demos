@@ -62,6 +62,22 @@
 	
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script>
+		var products = [
+			{
+				img: './img/hz.jpg',
+				name: '珂兰 黄金手 猴哥款',
+				price: '￥405.00'
+			},{
+				img: './img/hz.jpg',
+				name: '珂兰 黄金转运珠 猴哥款',
+				price: '￥100.00'
+			},{
+				img: './img/hz.jpg',
+				name: '珂兰 黄金手链 3D猴哥款',
+				price: '￥45.00'
+			}
+		];
+
 		$('.ct').on('mouseenter', '.prod',function(){
 			$(this).find('.hover').addClass('show');
 		});
@@ -69,11 +85,16 @@
 			$(this).find('.hover').removeClass('show');
 		});
 		$('.btn-add').on('click', function(){
-			var obj = '<li class="prod"><div class="hover"><a class="btn" href="javascript:;">立即抢购</a></div><a href="javascript:;"><img src="./img/hz.jpg"><p>黄金猴头</p><p class="price">￥999.00</p></a></li>';
 			for(var i =0; i < 3; i++) {
-				$('.ct').append(obj);
+				$('.ct').append(getHtml(products[i]));
+				console.log(getHtml(products[i]));
 			}
 		});
+
+		function getHtml(data){
+			var html = '<li class="prod"><div class="hover"><a class="btn" href="javascript:;">立即抢购</a></div><a href="javascript:;"><img src="' + data.img + '"><p>' + data.name + '</p><p class="price">' + data.price + '</p></a></li>';
+			return html;
+		}
 	</script>
 </body>
 </html>
