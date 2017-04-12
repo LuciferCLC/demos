@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>新闻</title>
+	<style>
+		* {
+			margin: 0 auto;
+			padding: 0;
+		}
+		li {
+			width: 95%;
+			border: 1px solid #bbb;
+			border-radius: 2px;
+			margin-top: 15px;
+			padding: 10px;
+			list-style: none;
+		}
+		li:hover {
+			background: #080;
+			color: #fff;
+			cursor: pointer;
+		}
+		a{
+		    width: 80px;
+			height: 40px;
+			line-height: 40px;
+			color: #e27272;
+			text-align: center;
+			display: block;
+			border:  1px solid #e27272;
+			border-radius: 3px;
+			margin: 10px auto;
+			text-decoration:none;
+		}
+	</style>
+</head>
+<body>
+	<ul id="ct">
+		<li>内容1</li>
+		<li>内容2</li>
+	</ul>
+	<a id="btn" href="javascript:;">加载更多</a>
+	
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script>
+		var $data = {num: 3, length: 5};
+
+		$('#btn').on('click', function() {
+			$.get('/news', $data).done(function(ret) {
+				create(ret);
+				$data.num += 5;
+			}).fail(function(){
+				console.log('error!');
+			});
+
+		});
+
+		function create(data) {
+			var $ct = $('#ct');
+			for(var i = 0; i < data.length; i++) {
+				var $obj = $('<li>' + data[i] + '</li>');
+				$ct.append($obj);
+			}
+		}
+	</script>
+</body>
+</html>
