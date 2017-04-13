@@ -86,7 +86,7 @@
 		var sig = CryptoJS.HmacSHA1(str, key).toString(CryptoJS.enc.Base64);
 		sig = encodeURIComponent(sig);
 		str += '&sig=' + sig;
-		var url = 'https://api.seniverse.com/v3/weather/daily.json?location=ip&' + str + "&callback=showWeather";
+		var url = 'https://api.seniverse.com/v3/weather/daily.json?location=ip&' + str + "&start=0&days=5&callback=showWeather";
 		var newScript = document.createElement('script');
 		newScript.src = url;
 		$('body').append(newScript);
