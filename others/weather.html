@@ -102,7 +102,7 @@
 			console.log(data);
 			var res = data.results[0];
 			var $today = $('.today');
-			$('.loc').find('p').text(res.location.name);
+			$('.loc').find('span').text(res.location.name);
 			$today.find('.wea').src = './img/' + res.now.code + '.png';
 			$today.find('.left').text(res.now.temperature);
 		}
@@ -117,14 +117,14 @@
 				if (fuDay > 6) {
 					fuDay -= 7;
 				}
-				$future[i].find('.day').text('周' + week[fuDay]);
-				$future[i].find('.date').text(res[i].date.substr(5, 2) + '月' + res[i].date.substr(8, 2) + '日');
-				$future[i].find('.wea').src =  './img/' + res[i].code_day + '.png';
+				$future.eq(i).find('.day').text('周' + week[fuDay]);
+				$future.eq(i).find('.date').text(res[i].date.substr(5, 2) + '月' + res[i].date.substr(8, 2) + '日');
+				$future.eq(i).find('.wea').src =  './img/' + res[i].code_day + '.png';
 			}
 			for(var i = 0; i < $msg.length; i++) {
-				$msg[i].eq(0).text(res[i].low + ' ~ ' + res[i].high + '℃');
-				$msg[i].eq(1).text(res[i].text_day);
-				$msg[i].eq(2).text(res[i].wind_direction);
+				$msg.eq(i).eq(0).text(res[i].low + ' ~ ' + res[i].high + '℃');
+				$msg.eq(i).eq(1).text(res[i].text_day);
+				$msg.eq(i).eq(2).text(res[i].wind_direction);
 			}
 		}
 	</script>
