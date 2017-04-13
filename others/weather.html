@@ -114,8 +114,8 @@
 			var res = data.results[0].daily;
 			var $future = $('.future');
 			var $msg = $('.msg');
-			for(var i = 1; i < $future.length; i++) {
-				var fuDay = day + i;
+			for(var i = 0; i < $future.length; i++) {
+				var fuDay = day + i + 1;
 				if (fuDay > 6) {
 					fuDay -= 7;
 				}
