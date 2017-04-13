@@ -110,7 +110,6 @@
 		function future(data) {
 			console.log(data);
 			var res = data.results[0].daily;
-			console.log(res[0].low);
 			var $future = $('.future');
 			var $msg = $('.msg');
 			for(var i = 1; i < $future.length; i++) {
@@ -123,9 +122,11 @@
 				$future.eq(i).find('.wea').src =  './img/' + res[i].code_day + '.png';
 			}
 			for(var i = 0; i < $msg.length; i++) {
-				$msg.eq(i).eq(0).text(res[i].low + ' ~ ' + res[i].high + '℃');
-				$msg.eq(i).eq(1).text(res[i].text_day);
-				$msg.eq(i).eq(2).text(res[i].wind_direction);
+				console.log($msg.eq(i));
+				console.log($msg.eq(i).eq(0));
+				// $msg.eq(i).eq(0).text(res[i].low + ' ~ ' + res[i].high + '℃');
+				// $msg.eq(i).eq(1).text(res[i].text_day);
+				// $msg.eq(i).eq(2).text(res[i].wind_direction);
 			}
 		}
 	</script>
