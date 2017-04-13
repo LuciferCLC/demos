@@ -15,7 +15,7 @@
 					<img class="map" src="./img/map.png">
 					<span></span>
 				</div>
-				<img src="./img/1.png">
+				<img class="wea" src="./img/1.png">
 				<div class="temp clearfix">
 					<div class="left">12</div>
 					<div class="right">
@@ -26,13 +26,13 @@
 				<div class="msg">
 					<p>12 ~ 20℃</p>
 					<p>阴</p>
-					<p>微风</p>				
+					<p>微风</p>
 				</div>
 			</div>
 			<div class="future">
 				<p>周六</p>
 				<p class="date">4月14日</p>
-				<img src="./img/2.png">
+				<img class="wea" src="./img/2.png">
 				<div class="msg">
 					<p>18 ~ 24℃</p>
 					<p>多云</p>
@@ -42,7 +42,7 @@
 			<div class="future">
 				<p>周日</p>
 				<p class="date">4月15日</p>
-				<img src="./img/3.png">
+				<img class="wea" src="./img/3.png">
 				<div class="msg">
 					<p>18 ~ 24℃</p>
 					<p>多云</p>
@@ -52,7 +52,7 @@
 			<div class="future">
 				<p>周一</p>
 				<p class="date">4月16日</p>
-				<img src="./img/4.png">
+				<img class="wea" src="./img/4.png">
 				<div class="msg">
 					<p>18 ~ 24℃</p>
 					<p>多云</p>
@@ -62,7 +62,7 @@
 			<div class="future">
 				<p>周二</p>
 				<p class="date">4月17日</p>
-				<img src="./img/5.png">
+				<img class="wea" src="./img/5.png">
 				<div class="msg">
 					<p>18 ~ 24℃</p>
 					<p>多云</p>
@@ -89,14 +89,26 @@
 		var sig = CryptoJS.HmacSHA1(str, key).toString(CryptoJS.enc.Base64);
 		sig = encodeURIComponent(sig);
 		str += '&sig=' + sig;
-		var url = 'https://api.seniverse.com/v3/weather/daily.json?location=ip&' + str + "&start=0&days=5&callback=showWeather";
-		var newScript = document.createElement('script');
-		newScript.src = url;
-		$('body').append(newScript);
+		var url_1 = 'https://api.seniverse.com/v3/weather/daily.json?location=ip&' + str + "&start=1&days=5&callback=future";
+		var url_2 = 'https://api.seniverse.com/v3/weather/now.json?location=ip&' + str + "&start=0&days=5&callback=today";
+		var newScript_1 = document.createElement('script');
+		var newScript_2 = document.createElement('script');
+		newScript_1.src = url_1;
+		newScript_2.src = url_2;
+		$('body').append(newScript_1);
+		$('body').append(newScript_2);
 
-		function showWeather(data){
+		function today(data){
 			console.log(data);
-			$('.loc').find('p').text(data[0].location.name);
+			var res = data.results[0];
+			var $today = $('.today');
+			$('.loc').find('p').text(res.location.name);
+			$today.find('.wea').src = './img/' + res.daily[0].code_day + '.png';
+			$today.find('.left').text()
+		}
+
+		function future(data) {
+			console.log(data);
 		}
 	</script>
 </body>
