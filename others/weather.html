@@ -11,7 +11,10 @@
 		</div>
 		<div class="main clearfix">
 			<div class="today">
-				<p class="loc"><img src="./img/map.png"> 惠州</p>
+				<div class="loc">
+					<img class="map" src="./img/map.png">
+					<span></span>
+				</div>
 				<img src="./img/1.png">
 				<div class="temp clearfix">
 					<div class="left">12</div>
@@ -93,6 +96,7 @@
 
 		function showWeather(data){
 			console.log(data);
+			$('.loc').find('p').text(data[0].location.name);
 		}
 	</script>
 </body>
