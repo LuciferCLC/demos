@@ -76,6 +76,7 @@
 	<script src="./hmac-sha1.js"></script>
 	<script>
 		var week = '日一二三四五六';
+		var wind = ['无风', '软风', '轻风', '微风', '和风', '清风', '强风', '劲风', '大风', '烈风', '狂风', '暴风', '台风'];
 		var mydate = new Date();
 		var month = mydate.getMonth() + 1;
 		var date = mydate.getDate();
@@ -126,7 +127,7 @@
 				console.log($msg.eq(i).eq(0));
 				$msg.eq(i).find('p').eq(0).text(res[i].low + ' ~ ' + res[i].high + '℃');
 				$msg.eq(i).find('p').eq(1).text(res[i].text_day);
-				$msg.eq(i).find('p').eq(2).text(res[i].wind_direction);
+				$msg.eq(i).find('p').eq(2).text(wind[res[i].wind_scale]);
 			}
 		}
 	</script>
