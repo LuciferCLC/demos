@@ -7,7 +7,7 @@
 <body>
 	<div id="container">
 		<div class="header">
-			<p class="day"></p>
+			<p class="now"></p>
 		</div>
 		<div class="main clearfix">
 			<div class="today">
@@ -30,7 +30,7 @@
 				</div>
 			</div>
 			<div class="future">
-				<p>周六</p>
+				<p class="day">周六</p>
 				<p class="date">4月14日</p>
 				<img class="wea" src="./img/2.png">
 				<div class="msg">
@@ -40,7 +40,7 @@
 				</div>
 			</div>
 			<div class="future">
-				<p>周日</p>
+				<p class="day">周日</p>
 				<p class="date">4月15日</p>
 				<img class="wea" src="./img/3.png">
 				<div class="msg">
@@ -50,7 +50,7 @@
 				</div>
 			</div>
 			<div class="future">
-				<p>周一</p>
+				<p class="day">周一</p>
 				<p class="date">4月16日</p>
 				<img class="wea" src="./img/4.png">
 				<div class="msg">
@@ -60,7 +60,7 @@
 				</div>
 			</div>
 			<div class="future">
-				<p>周二</p>
+				<p class="day">周二</p>
 				<p class="date">4月17日</p>
 				<img class="wea" src="./img/5.png">
 				<div class="msg">
@@ -80,7 +80,7 @@
 		var month = mydate.getMonth() + 1;
 		var date = mydate.getDate();
 		var day = mydate.getDay();
-		$('.day').text(month + '月' + date + '日 周' + week[day]);
+		$('.now').text(month + '月' + date + '日 周' + week[day]);
 
 		var uid = 'UD34DBF8B8';
 		var key = 'm64yeimbhrc4szfx';
@@ -89,8 +89,8 @@
 		var sig = CryptoJS.HmacSHA1(str, key).toString(CryptoJS.enc.Base64);
 		sig = encodeURIComponent(sig);
 		str += '&sig=' + sig;
-		var url_1 = 'https://api.seniverse.com/v3/weather/daily.json?location=ip&' + str + "&start=1&days=5&callback=future";
-		var url_2 = 'https://api.seniverse.com/v3/weather/now.json?location=ip&' + str + "&start=0&days=5&callback=today";
+		var url_1 = 'https://api.seniverse.com/v3/weather/daily.json?location=ip&' + str + "&start=0&days=4&callback=future";
+		var url_2 = 'https://api.seniverse.com/v3/weather/now.json?location=ip&' + str + "&callback=today";
 		var newScript_1 = document.createElement('script');
 		var newScript_2 = document.createElement('script');
 		newScript_1.src = url_1;
@@ -103,12 +103,29 @@
 			var res = data.results[0];
 			var $today = $('.today');
 			$('.loc').find('p').text(res.location.name);
-			$today.find('.wea').src = './img/' + res.daily[0].code_day + '.png';
-			$today.find('.left').text()
+			$today.find('.wea').src = './img/' + res.now.code + '.png';
+			$today.find('.left').text(res.now.temperature);
 		}
 
 		function future(data) {
 			console.log(data);
+			var res = data.results[0].daily;
+			var $future = $('.future');
+			var $msg = $('.msg');
+			for(var i = 1; i < $future.length; i++) {
+				var fuDay = day + i;
+				if (fuDay > 6) {
+					fuDay -= 7;
+				}
+				$future[i].find('.day').text('周' + week[fuDay]);
+				$future[i].find('.date').text(res[i].date.substr(5, 2) + '月' + res[i].date.substr(8, 2) + '日');
+				$future[i].find('.wea').src =  './img/' + res[i].code_day + '.png';
+			}
+			for(var i = 0; i < $msg.length; i++) {
+				$msg[i].eq(0).text(res[i].low + ' ~ ' + res[i].high + '℃');
+				$msg[i].eq(1).text(res[i].text_day);
+				$msg[i].eq(2).text(res[i].wind_direction);
+			}
 		}
 	</script>
 </body>
