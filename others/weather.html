@@ -89,7 +89,7 @@
 		var sig = CryptoJS.HmacSHA1(str, key).toString(CryptoJS.enc.Base64);
 		sig = encodeURIComponent(sig);
 		str += '&sig=' + sig;
-		var url_1 = 'https://api.seniverse.com/v3/weather/daily.json?location=ip&' + str + "&start=0&days=4&callback=future";
+		var url_1 = 'https://api.seniverse.com/v3/weather/daily.json?location=ip&' + str + "&start=0&days=5&callback=future";
 		var url_2 = 'https://api.seniverse.com/v3/weather/now.json?location=ip&' + str + "&callback=today";
 		var newScript_1 = document.createElement('script');
 		var newScript_2 = document.createElement('script');
@@ -110,6 +110,7 @@
 		function future(data) {
 			console.log(data);
 			var res = data.results[0].daily;
+			console.log(res[0].low);
 			var $future = $('.future');
 			var $msg = $('.msg');
 			for(var i = 1; i < $future.length; i++) {
