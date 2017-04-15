@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>无缝滚动</title>
+	<style>
+		ul,
+		li {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		#container {
+			width: 480px;
+			height: 360px;
+			margin: 0 auto;
+			border: 1px solid #ccc;
+			position: relative;
+			overflow: hidden;
+		}
+		.img-ct {
+			position: absolute;
+			overflow: hidden;
+		}
+		.img-ct>li {
+			float: left;
+			background: #52bbfc;
+		}
+		.img-ct img {
+			width: 480px;
+			height: 360px;
+		}
+		.btn {
+			display:  block;
+			width: 30px;
+			height: 30px;
+			font-size: 20px;
+			font-weight: bold;
+			text-align: center;
+			line-height: 28px;
+			text-decoration: none;
+			background: rgba(0, 0, 0, .3);
+			color: #fff;
+			border-radius: 50%;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+		.btn:hover {
+			background: rgba(0, 0, 0, .8);
+		}
+		.pre {
+			left: 1%;
+		}
+		.next {
+			right: 1%;
+		}
+		.tag {
+			padding: 5px;
+			position: absolute;
+			left: 50%;
+			bottom: 5%;
+			transform: translateX(-50%);
+		}
+		.tag>li {
+			width: 20px;
+			height: 5px;
+			background: #fff;
+			border-radius: 3px;
+			float: left;
+			margin-left: 5px;
+			cursor: pointer;
+		}
+
+		.tag>li.act {
+			background: #777;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<ul class="img-ct">
+			<li><a href="javascript:;"><img src="./img/1.jpg"></a></li>
+			<li><a href="javascript:;"><img src="./img/2.jpg"></a></li>
+			<li><a href="javascript:;"><img src="./img/3.jpg"></a></li>
+			<li><a href="javascript:;"><img src="./img/4.jpg"></a></li>
+			<li><a href="javascript:;"><img src="./img/5.jpg"></a></li>
+		</ul>
+		<a class="btn pre" href="javascript:;">&lt;</a>
+		<a class="btn next" href="javascript:;">&gt;</a>
+		<ul class="tag">
+			<li class="act"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script>
+		var $ct = $('.img-ct');
+		var $imgs = $('.img-ct>li');
+		var $pre = $('.pre');
+		var $next = $('.next');
+		var $tags = $('.tag>li');
+		var count = $imgs.length;
+		var imgWidth = $imgs.width();
+		var index = 0;
+		var flag = false;
+
+		start($imgs);
+		var timer = setInterval('next(1)', 2500);
+
+		$next.click(function() {
+			clearInterval(timer);
+			next(1);
+			timer = setInterval('next(1)', 2500);
+		});
+		$pre.click(function() {
+			clearInterval(timer);
+			pre(1);
+			timer = setInterval('next(1)', 2500);
+		});
+
+		$tags.click(function() {
+			clearInterval(timer);
+			var i = $(this).index();
+			if(i > index) {
+				next(i - index);
+			}
+			else if(i < index) {
+				pre(index - i);
+			}
+			timer = setInterval('next(1)', 2500);
+		});
+
+		function start($node) {
+			$ct.append($node.first().clone());
+			$ct.prepend($node.last().clone());
+			$ct.width((count + 2) * imgWidth);
+			$ct.css({left: -imgWidth});
+		}
+
+		function next(len) {
+			if(flag) return;
+			flag = true;
+			$ct.animate({
+				left: '-=' + len * imgWidth
+			}, function() {
+				index += len;
+				if(index === count) {
+					index = 0;
+					$ct.css({left: - imgWidth});
+				}
+				setTag();
+				flag = false;
+			});
+		}
+
+		function pre(len) {
+			if(flag) return;
+			flag = true;
+			$ct.animate({
+				left: '+=' + len * imgWidth
+			}, function() {
+				index -= len;
+				if(index < 0) {
+					index = count - 1;
+					$ct.css({left: -count * imgWidth});
+				}
+				setTag();
+				flag = false;
+			});
+		}
+
+		function setTag() {
+			$tags.removeClass('act').eq(index).addClass('act');
+		}
+	</script>
+</body>
+</html>
