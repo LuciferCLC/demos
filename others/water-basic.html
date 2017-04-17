@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>water-basic</title>
+	<style>
+		#container {
+			min-width: 280px;
+			position: relative;
+		}
+		.item {
+			width: 200px;
+			margin: 10px 10px 0 0;
+			position: absolute;
+			transition: all 1s;
+		}
+		.tag {
+			opacity: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div class="item">1</div>
+		<div class="item">2</div>
+		<div class="item">3</div>
+		<div class="item">4</div>
+		<div class="item">5</div>
+		<div class="item">6</div>
+		<div class="item">7</div>
+		<div class="item">8</div>
+		<div class="item">9</div>
+		<div class="item">10</div>
+		<div class="item">11</div>
+		<div class="item">12</div>
+		<div class="item">13</div>
+		<div class="item">14</div>
+		<div class="item">15</div>
+		<div class="item">16</div>
+		<div class="item">17</div>
+		<div class="item">18</div>
+		<div class="item">19</div>
+		<div class="item">20</div>
+	</div>
+	<span class="tag">1</span>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script>
+		var h = [200, 250, 300, 350, 400];
+		var c = ['#f4b310', '#691bb8', '#006ac1', '#41cb56', '#1199e5'];
+		var $ct = $('#container');
+		var $items = $('.item');
+		var nodeWidth = $items.outerWidth(true);
+		var count = 0;
+		var arr = [];
+
+		setCss($items);
+		setArr();
+		setPos($items);
+
+		$(window).resize(function() {
+			setArr();
+			setPos($('.item'));
+		});
+
+		$(window).scroll(function() {
+			if(isVisible($('.tag'))) {
+				create();
+			}
+		});
+
+		function waterFull() {
+			this.
+		}
+
+		function setCss($nodes) {
+			var index = 0;
+			if($nodes.length == 1) {
+				index = Math.floor(Math.random()*5);
+				$nodes.css({'height': h[index], 'background': c[index]});
+			} else {
+				for(var i = 0; i < $items.length; i++) {
+					index = Math.floor(Math.random()*5);
+					$nodes.eq(i).css({'height': h[index], 'background': c[index]});
+				}
+			}
+
+		}
+
+		function setArr() {
+			count = parseInt($(window).width() / nodeWidth);
+			for(var i = 0; i < count; i++) {
+				arr[i] = 0;
+			}
+		}
+
+		function setPos($nodes) {
+			$nodes.each(function() {
+				var minV = Math.min.apply(null, arr);
+				var minI = arr.indexOf(minV);
+
+				$(this).css({
+					top: arr[minI],
+					left: nodeWidth * minI
+				});
+
+				arr[minI] += $(this).outerHeight(true);
+				minV = Math.min.apply(null, arr);
+				$ct.height(minV);
+			});
+		}
+
+		function isVisible($node) {
+			var winHeight = $(window).height();
+			var nodeHeight = $node.outerHeight();
+			var offsetTop = $node.offset().top;
+			var scrollTop = $(window).scrollTop();
+			if(winHeight + scrollTop > offsetTop && offsetTop + nodeHeight > scrollTop) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+		function create() {
+			var x = $('.item').length;
+			x++;
+			if(x > 40) return;
+			var $node = '<div class="item">' + x + '</div>';
+			$('#container').append($node);
+			var $last = $('.item').last();
+			setCss($last);
+			setPos($last);
+		}
+
+
+	</script>
+</body>
+</html>

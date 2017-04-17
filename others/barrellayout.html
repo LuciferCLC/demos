@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>barrellayout</title>
+	<style>
+		#ct {
+			width: 1100px;
+			margin: 0 auto;
+		}
+		.img-row {
+			margin-bottom: 10px;
+		}
+		.img-box {
+			display: inline-block;
+			margin-right: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div id="ct"></div>
+	
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script>
+
+
+
+	function Barrel(sct) {
+		this.sct = sct;
+		this.imgNum = 30;
+		this.nodeHeight = 150;
+		this.list = [];
+		this.loadImg();
+	}
+
+	Barrel.prototype = {
+
+		loadImg: function() {
+			var _this = this;
+			var imgs = this.getImg(100);
+			$.each(imgs, function(i, url) {
+				var img = new Image();
+				img.src = url;
+				img.onload = function() {
+					var rat = img.width / img.height;
+					var imgInfo = {
+						target: $(img),
+						width: _this.nodeHeight * rat,
+						height: _this.nodeHeight,
+						rat: rat
+					};
+					_this.render(imgInfo);
+				}
+			});
+		},
+
+		render: function(imgInfo) {
+			var _this = this;
+			var list = this.list;
+			var clientWidth = this.sct.width();
+			var rowWidth = 0;
+			var rowHeight = 0;
+			var lastImgInfo = imgInfo;
+
+			this.list.push(imgInfo);
+			$.each(list, function(i, imgInfo) {
+				rowWidth += _this.list[i].width + 5;
+				if(rowWidth > clientWidth) {
+					list.pop();
+					rowWidth -= lastImgInfo.width;
+					rowHeight = clientWidth * _this.nodeHeight / rowWidth;
+					_this.layout(rowHeight);
+					_this.list = [];
+					_this.list.push(lastImgInfo);
+				}
+			});	
+		},
+
+		layout: function(rowHeight) {
+			var $rowCt = $('<div class="img-row"></div>');
+			$.each(this.list, function(i, imgInfo) {
+				var $imgCt = $('<div class="img-box"></div>');
+				var $img = imgInfo.target;
+				$img.height(rowHeight);
+				$imgCt.append($img);
+				$rowCt.append($imgCt);
+			});
+			this.sct.append($rowCt);
+		},
+
+		getImg: function(len) {
+			var color = null, 
+				width = 0, 
+				height = 0, 
+				urls = [];
+			for(var i = 0; i < len; i++) {
+				color = Math.random().toString(16).substr(2, 6);
+				width = Math.floor(Math.random() * 100 + 50);
+				height = Math.floor(Math.random() * 30 + 50);
+				urls.push("http://placehold.it/" + width + "x" + height + "/" + color + "/fff");
+			}
+			return urls;
+		}
+	};
+
+	var barrel = new Barrel($('#ct'));
+	</script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<title>瀑布流新闻</title>
+	<style>
+		body,
+		ul,
+		li,
+		p,
+		div {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		li {
+			list-style: none;
+		}
+	
+		.wrap {
+			width: 99%;
+			margin: 0 auto;
+			padding: 10px;
+		}
+		.news-ct {
+			width: 100%;
+			position: relative;
+			margin: 0 auto;
+		}
+		.item {
+			width: 320px;
+			margin: 5px;
+			padding: 0 0 10px 0;
+			position: absolute;
+			border: 1px solid #dfdfdf;
+		}
+		.item img {
+			margin: 10px;
+			width: 300px;
+		}
+
+		.item h4 {
+			height: 25px;
+			margin: 0 12px;
+			border-bottom: 1px solid #dbdbdb;
+		}
+		.item p {
+			font-size: 12px;
+			line-height: 1.8;
+			margin: 10px 15px 0;
+			color: #aaa;
+		}
+		.hide {
+			display: none;
+		}
+		#tag {
+			opacity: 0;
+		}
+
+
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<ul class="news-ct">
+			<li class="item hide"></li>
+		</ul>
+		<div id="tag">看不见俺~</div>
+	</div>
+
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script>
+		var page = 1;
+		var pageCount = 10;
+		var sumHeight = [];
+		var nodeWidth = $('.item').outerWidth(true);
+		var colNum = parseInt($('.news-ct').width() / nodeWidth);
+		for(var i = 0; i < colNum; i++) {
+			sumHeight[i] = 0;
+		}
+		var flag = true;
+
+		start();
+
+		$(window).scroll(function() {
+			if(!flag) return;
+			if(isVisible($('#tag'))) {
+				start();
+			}
+		});
+
+		function start() {
+			getNews(function(list) {
+				flag = true;
+				$.each(list, function(i, news) {
+					var $node = getNode(news);
+					$node.find('img').load(function() {
+						$('.news-ct').append($node);
+						waterFall($node);
+					});
+				});
+			});
+			flag = false;
+		}
+
+		function getNews(callback) {
+			$.ajax({
+				url: 'http://platform.sina.com.cn/slide/album_tech',
+				dataType: 'jsonp',
+				jsonp: 'jsoncallback',
+				data: {
+					app_key: '1271687855',
+					num: pageCount,
+					page: page
+				}
+			}).done(function(ret) {
+				if(ret && ret.status && ret.status.code === '0') {
+					callback(ret.data);
+					page++;
+				} else {
+					console.log('error data!');
+				}
+			});
+		}
+
+		function getNode(item) {
+			var node = '<li class="item"><a href="'+ item.url +'" class="link"><img src="' + item.img_url + '" alt=""></a><h4 class="header">'+ item.short_name +'</h4><p class="desp">'+item.short_intro+'</p></li>';
+			return $(node);console.log(node);
+		}
+
+		function waterFall($node) {
+			var idx = 0;
+			var minHeight = sumHeight[0];
+			for(var i = 0; i < sumHeight.length; i++) {
+				if(sumHeight[i] < minHeight) {
+					idx = i;
+					minHeight = sumHeight[i];
+				}
+			}
+
+			$node.css({
+				left: nodeWidth * idx,
+				top: minHeight,
+				opacity: 1
+			});
+			sumHeight[idx] = $node.outerHeight(true) + sumHeight[idx];
+			$('.news-ct').height(Math.max.apply(null, sumHeight));
+		}
+
+		function isVisible($node) {
+			var scrollTop = $(window).scrollTop();
+			var winHeight = $(window).height();
+			var offsetTop = $node.offset().top;
+
+			if(offsetTop < winHeight + scrollTop) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+
+	</script>
+</body>
+</html>

@@ -11,7 +11,7 @@ $(window).scroll(function() {
 			return;
 		}
 		if(isVisible($(this))) {
-			setTimeout(show($(this)), 1000);
+			show($(this));
 		}
 	});
 });
