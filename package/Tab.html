@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <title>Tab组件</title>
+  <style>
+  	ul,
+    li {
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      list-style: none;
+    }
+    .clearfix:after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+
+    .tab {
+      width: 550px;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+      margin: 20px auto;
+      padding: 15px 10px;
+    }
+    .tab-nav {
+      font-size: 18px;
+      font-weight: bold;
+      border-bottom: 2px solid #aaa; 
+    }
+    .tab-nav>li {
+      float: left;
+      color: #9b7346;
+      border: 2px solid #fff;
+      border-bottom: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+    .tab-nav>li.active {
+      color: #777;
+      border-color: #aaa;
+      border-bottom: 2px solid #fff; 
+      border-radius: 5px 5px 0 0;
+      margin-bottom: -2px;
+    }
+    .tab-ct {
+      padding: 20px 10px;
+    }
+    .tab-ct>li {
+      display: none;
+    }
+    .tab-ct>li.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<div class="tab">
+  <ul class="tab-nav clearfix">
+    <li class="active">tab-1</li>
+    <li>tab-2</li>
+    <li>tab-3</li>
+  </ul>
+  <ul class="tab-ct">
+    <li class="active">内容-1</li>
+    <li>内容-2</li>
+    <li>内容-3</li>
+  </ul>
+</div>
+
+<div class="tab">
+  <ul class="tab-nav clearfix">
+    <li class="active">tab-1</li>
+    <li>tab-2</li>
+    <li>tab-3</li>
+    <li>tab-4</li>
+  </ul>
+  <ul class="tab-ct">
+    <li class="active">内容-1</li>
+    <li>内容-2</li>
+    <li>内容-3</li>
+    <li>内容-4</li>
+  </ul>
+</div>
+
+<div class="tab">
+  <ul class="tab-nav clearfix">
+    <li class="active">tab-1</li>
+    <li>tab-2</li>
+    <li>tab-3</li>
+    <li>tab-4</li>
+    <li>tab-5</li>
+  </ul>
+  <ul class="tab-ct">
+    <li class="active">内容-1</li>
+    <li>内容-2</li>
+    <li>内容-3</li>
+    <li>内容-4</li>
+    <li>内容-5</li>
+  </ul>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>
+/*
+var Tab = (function(){
+  function _Tab (ct) {
+    this.ct = ct;
+    this.init();
+    this.bind();
+  }
+
+  _Tab.prototype = {
+    init: function() {
+      this.tabList = this.ct.querySelectorAll('.tab-nav>li');
+      this.tabPanels = this.ct.querySelectorAll('.tab-ct>li');
+    },
+
+    bind: function() {
+      var _this = this;
+      this.tabList.forEach(function(list) {
+        list.onclick = function(e) {
+          var index = [].indexOf.call(_this.tabList, e.target);
+          _this.tabList.forEach(function(li) {
+            li.classList.remove('active');
+          });
+          e.target.classList.add('active');
+          _this.tabPanels.forEach(function(panel) {
+            panel.classList.remove('active');
+          });
+          _this.tabPanels[index].classList.add('active');
+        }
+      })
+    }
+  }
+
+  return {
+    set: function(tabs) {
+      tabs.forEach(function(tab) {
+        new _Tab(tab);
+      })
+    }
+  }
+})();
+
+Tab.set(document.querySelectorAll('.tab'));
+*/
+
+var Tab = (function() {
+  function _Tab($ct) {
+    this.$ct = $ct;
+    this.init();
+    this.bind();
+  }
+  
+  _Tab.prototype = {
+    init: function() {
+      this.$tabList = this.$ct.find('.tab-nav>li');
+      this.$tabPanels = this.$ct.find('.tab-ct>li');
+    },
+
+    bind: function() {
+      var _this = this;
+      this.$tabList.on('click', function(e) {
+        _this.$tabList.removeClass('active');
+        $(e.target).addClass('active');
+        _this.$tabPanels.removeClass('active');
+        _this.$tabPanels.eq($(e.target).index()).addClass('active');
+      });
+    }
+  }
+
+  return {
+    set: function($tabs) {
+      $tabs.each(function(i, node) {
+        new _Tab($(node));
+      })
+    }
+  }
+})();
+
+Tab.set($('.tab'));
+
+</script>
+</body>
+</html>

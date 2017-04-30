@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <title>Dialog</title>
+  <style>
+  .dialog {
+    width:328px;
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    z-index: 999;
+    transform: translateX(-50%);
+  }
+  .overlay {
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    background: #000;
+    position: absolute;
+    top: 0; 
+    left: 0;
+    display: none;
+    z-index: 888;
+  }
+
+
+  .dialog .dialog-box {
+    font-size: 14px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    background: #eee;    
+  }
+  .dialog .dialog-header {
+    padding: 10px 19px;
+    color: #fff;
+    background: #676666;
+    user-select: none;
+  }
+  .dialog .dialog-header h3{
+    margin: 0;
+    font-size: 14px;
+  }
+  .dialog .dialog-header .btn-close{
+    position: absolute;
+    right: 10px;
+    top: 8px;
+    font-family: fantasy;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .dialog .dialog-content {
+    padding: 10px;
+    margin: 13px;
+    color: #666;
+    font-size: 11px;
+  }
+  .dialog .dialog-footer{
+    text-align: center;
+  }
+  .dialog-footer>a {
+    position: relative;
+    text-align: center;
+    background-color: #e33100;
+    display: inline-block;
+    width: 50px;
+    padding: 5px 0 6px;
+    margin: 2px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 3px;
+  }
+
+  .dialog-footer>a:hover {
+    background-color: #c33100;
+  }
+  </style>
+</head>
+<body>
+<input id="open-1" type="button" value="对话框1">
+<input id="open-2" type="button" value="对话框2">
+<input id="open-3" type="button" value="对话框3">
+<input id="open-4" type="button" value="对话框4">
+<input id="open-5" type="button" value="对话框5">
+<div class="overlay"></div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>
+var Dialog = (function() {
+  function Modal(opts, idx) {
+    this.idx = idx;
+    this.createDialog();
+    this.bindEvent();
+    this.open(opts);
+  }
+
+  Modal.prototype = {
+    
+    defaultOpts: {
+      title: '',
+      message: '',
+      isShowCloseBtn: true,
+      isShowConfirmBtn: false,
+      onClose: function() {},
+      onConfirm: function() {}
+    },
+    
+
+    open: function(opts) {
+      this.setOpts(opts);
+      this.setDialog();
+      this.$dialog.show();
+    },
+
+    setOpts: function(opts) {
+      if (typeof opts == 'string') {
+        this.opts = $.extend({}, this.defaultOpts, {message: opts});
+      } else if (typeof opts == 'object') {
+        this.opts = $.extend({}, this.defaultOpts, opts);
+      }
+    },
+
+    bindEvent: function() {
+      var _this = this;
+      var flag = false;
+      var mouseX = null,
+          mouseY = null,
+          offsetX = null,
+          offsetY = null;
+      this.$dialog.find('.dialog-header').on('mousedown', function(e) {
+        mouseX = e.pageX;  
+        mouseY = e.pageY;
+        offsetX = _this.$dialog.offset().left;
+        offsetY = _this.$dialog.offset().top;
+        flag = true;
+      });
+      this.$dialog.find('.dialog-header').on('mousemove', function(e) {
+        if(!flag) return;
+        console.log(1);
+        var borderX = document.body.clientWidth - _this.$dialog.width(true),
+            borderY = document.body.clientHeight - _this.$dialog.height(true);
+        var moveX = e.pageX,
+            moveY = e.pageY;
+        var X = parseInt(moveX) - parseInt(mouseX) + parseInt(offsetX),
+            Y = parseInt(moveY) - parseInt(mouseY) + parseInt(offsetY);
+        if (X <= 0) X = 0;
+        if (Y <= 0) Y = 0;
+        if (X >= borderX) X = borderX;
+        if (Y >= borderY) Y = borderY;
+        _this.$dialog.css({
+          'transform': 'none',
+          'left': X,
+          'top': Y
+        });
+      });
+      $(window).on('mouseup', function() {
+        flag = false;
+      });
+      this.$dialog.find('span.btn-close').on('mousedown', function(e) {
+        e.stopPropagation();
+      });
+      this.$dialog.find('.btn-close').on('click', function(e) {
+        e.preventDefault();
+        $('.overlay').hide();
+        _this.opts.onClose();
+        _this.$dialog.hide();
+      });
+    },
+
+    createDialog: function() {
+      var tpl = '<div class="dialog">'
+              + '<div class="dialog-box">'
+              + '<div class="dialog-header"><h3></h3><span class="btn-close">x</span></div>'
+              +   '<div class="dialog-content">'
+              + '</div>'
+              + '<div class="dialog-footer">'
+              + '  <a href="#" class="btn-close">取消</a>'
+              + '  <a href="#" class="btn-confirm">确认</a>'
+              + '</div>'
+              + '</div>'
+              + '</div>';
+      this.$dialog = $(tpl);
+      $('body').append(this.$dialog);
+    },
+
+    setDialog: function() {
+      if (!this.opts.title) {
+        this.$dialog.find('.dialog-header').hide();
+      } else {
+        this.$dialog.find('.dialog-header>h3').text(this.opts.title);
+        this.$dialog.find('.dialog-header').show();
+      }
+      if (!this.opts.isShowCloseBtn) {
+        this.$dialog.find('.dialog-footer>.btn-close').hide();
+      } else {
+        this.$dialog.find('.dialog-footer>.btn-close').show();
+      }
+      if (!this.opts.isShowConfirmBtn) {
+        this.$dialog.find('.dialog-footer>.btn-confirm').hide();
+      } else {
+        this.$dialog.find('.dialog-footer>.btn-confirm').show();
+      }
+      $('.overlay').show();
+      this.$dialog.attr('idx', this.idx);
+      this.$dialog.find('.dialog-content').html(this.opts.message);
+    }
+  };
+
+  return {
+    openModal: function(opts, idx) {
+      var isExist = (function() {
+        var flag = false;
+        $('.dialog').each(function(i, node) {
+          if ($(node).attr('idx') == idx) {
+            $('.overlay').show();
+            $(node).show();
+            flag = true;
+          }
+        });
+        return flag;
+      })();
+      if (!($('.dialog').length > 0 && isExist)) new Modal(opts, idx);
+    }
+  }
+})();
+
+$('#open-1').on('click',function(){
+  Dialog.openModal('hello', 1);
+});
+
+$('#open-2').on('click',function(){
+  Dialog.openModal('<a href="https://www.baidu.com">百度</a>', 2);
+});
+
+$('#open-3').on('click',function(){
+  Dialog.openModal({
+    title: '欢迎',
+    message: 'hello',
+    isShowCloseBtn: true,
+    isShowConfirmBtn: true,
+    onClose: function(){
+      alert('close')
+    },
+    onConfirm: function(){
+      alert('取 消');
+    }
+  }, 3);
+});
+
+var tpl = '<ul><li>内容-1</li><li>内容-2</li><li>内容-3</li><li>内容-4</li></ul>';
+$('#open-4').on('click',function(){
+  Dialog.openModal({
+    title: '无序列表',
+    message: tpl,
+    isShowCloseBtn: true,
+    isShowConfirmBtn: true,
+    onClose: function(){
+      alert('close')
+    },
+    onConfirm: function(){
+      alert('取 消');
+    }
+  }, 4);
+});
+$('#open-5').on('click',function(){
+  Dialog.openModal({
+    title: '欢迎',
+    message: 'hello',
+    isShowCloseBtn: false,
+    isShowConfirmBtn: false
+  }, 5);
+});
+
+</script>
+</body>
+</html>

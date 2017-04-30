@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <title>DatePicker</title>
+  <style>
+  .date-picker {
+    width: 200px;
+    font: 14px serif, cursive, fantasy;
+    border: 1px solid #ccc;
+    position: absolute;
+    display: none;
+  }
+  .date-picker>.header {
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+    background: #ca2b2b;
+  }
+  .date-picker .pre {
+    display: block;
+    width: 0;
+    height: 0;
+    float: left;
+    margin-left: 10px;
+    margin-top: 6px;
+    border-right: 7px solid #fff;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    cursor: pointer;
+  }
+  .date-picker .next {
+    display: block;
+    width: 0;
+    height: 0;
+    float: right;
+    margin-right: 10px;
+    margin-top: 6px;
+    border-left: 7px solid #fff;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    cursor: pointer;
+  }
+  .date-picker .pre:hover {
+    border-right-color: #aaa;
+  }
+  .date-picker .next:hover {
+    border-left-color: #aaa;
+  }
+  .date-picker>.panel {
+    width: 190px;
+    text-align: center;
+    background: #fff;
+    margin: 5px;
+    border-collapse: collapse;
+  }
+  .date-picker>.panel th {
+    line-height: 2;
+  }
+  .date-picker .panel td {
+    padding: 2px;
+    line-height: 1.2;
+  }
+  .date-picker .pre-month,
+  .date-picker .next-month {
+    color: #ccc;
+  }
+  .date-picker .cur-month {
+    cursor: pointer;
+  }
+  .date-picker .cur-month:hover {
+    background: #ccc;
+    color: #fff;
+  }
+  .date-picker .cur-date {
+    background: #CA2B2B;
+    color: #fff;
+  }
+  .date-picker .cur-date:hover {
+    background: #CA2B2B;
+    color: #fff;    
+  }
+  </style>
+</head>
+<body>
+<input class="date-ipt" type="text">
+<input class="date-ipt" type="text">
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>
+var DatePicker = (function() {
+  function _DatePicker($target) {
+    this.$target = $target;
+    this.init(); // 初始化
+    this.render(); // 渲染日历模板
+    this.setData(); // 设置数据
+    this.bind(); // 绑定事件
+  } 
+
+  _DatePicker.prototype = {
+    init: function() {
+      if (this.isValidDate(this.$target.attr('date-init'))) {
+        this.date = new Date(this.$target.attr('date-init'));
+        this.watchDate = new Date(this.$target.attr('date-init'));
+        console.log(this.$target.attr('date-init'));
+      } else {
+        this.date = new Date();
+        this.watchDate = new Date();
+      }
+    },
+
+    render: function() {
+      var tpl = '<div class="date-picker">'
+              + '<div class="header">'
+              + '<span class="pre"></span>'
+              + '<span class="cur"></span>'
+              + '<span class="next"></span>'
+              + '</div>'
+              + '<table class="panel">'
+              + '<thead>'
+              + '<tr>'
+              + '<th>日</th>'
+              + '<th>一</th>'
+              + '<th>二</th>'
+              + '<th>三</th>'
+              + '<th>四</th>'
+              + '<th>五</th>'
+              + '<th>六</th>'
+              + '</tr>'
+              + '</thead>'
+              + '<tbody></tbody>'
+              + '</div>';
+      this.$datepicker = $(tpl);
+      this.$datepicker.insertAfter(this.$target).css({
+        'left': this.$target.offset().left,
+        'top': this.$target.offset().top + this.$target.height(true)
+      });
+    },
+
+    setData: function() {
+      this.$datepicker.find('tbody').html('');
+      var firstDay = this.getFirstDay(this.watchDate),
+          lastDay = this.getLastDay(this.watchDate);
+      var dateArr = [];
+      for(var i = firstDay.getDay(); i > 0; i--) {
+        var d = new Date(firstDay.getTime() - i * 24 * 60 * 60 * 1000);
+        dateArr.push({
+          'type': 'pre', 
+          'date': d
+        });
+      }
+      for(var j = 0; j < lastDay.getDate() - firstDay.getDate() + 1; j++) {
+        var d = new Date(firstDay.getTime() + j * 24 * 60 * 60 * 1000);
+        dateArr.push({
+          'type': 'cur',
+          'date': d
+        });
+      }
+      for(var k = 1; k < 7 - lastDay.getDay(); k++) {
+        var d = new Date(lastDay.getTime() + k * 24 * 60 * 60 * 1000);
+        dateArr.push({
+          'type': 'next',
+          date: d
+        });
+      }
+      this.$datepicker.find('.cur').text(this.watchDate.getFullYear() + '年' + (this.watchDate.getMonth() + 1) + '月');
+      var tpl = '';
+      for(var i = 0; i < dateArr.length; i++) {
+        if (i % 7 == 0) {
+          tpl = '<tr>' + tpl;
+        }
+        tpl += '<td class="';
+        if (dateArr[i].type == 'pre') {
+          tpl += 'pre-month';
+        } else if (dateArr[i].type == 'cur') {
+          tpl += 'cur-month';
+        } else {
+          tpl += 'next-month';
+        }
+        if (this.getYMD(this.date) == this.getYMD(dateArr[i].date)) {
+          tpl += ' cur-date';
+        }
+        tpl += '" data-date="' + this.getYMD(dateArr[i].date) + '">' + this.setFormat(dateArr[i].date.getDate()) + '</td>';
+        if(i % 7 == 6) {
+          tpl += '</tr>'; 
+        }
+      }
+      this.$datepicker.find('tbody').html(tpl);
+    },
+
+    bind: function() {
+      var _this = this;
+      this.$datepicker.find('.pre').on('click', function() {
+        _this.watchDate = _this.getPreMonth(_this.watchDate);
+        _this.setData();
+      });
+      this.$datepicker.find('.next').on('click', function() {
+        _this.watchDate = _this.getNextMonth(_this.watchDate);
+        _this.setData();
+      });
+      this.$datepicker.find('.panel>tbody').on('click', '.cur-month', function(e) {
+        _this.$target.val($(this).attr('data-date'));
+        // _this.$datepicker.hide();
+        _this.$datepicker.fadeOut();
+        _this.$datepicker.find('.cur-date').removeClass('cur-date');
+        $(e.target).addClass('cur-date');
+      });
+      this.$target.on('click', function(e) {
+        e.stopPropagation();
+        _this.$datepicker.siblings('div.date-picker').hide();
+        // _this.$datepicker.show();
+        _this.$datepicker.fadeIn()
+      });
+      $(window).on('click', function() {
+        // _this.$datepicker.hide();
+        _this.$datepicker.fadeOut();
+      });
+      this.$datepicker.on('click', function(e) {
+        e.stopPropagation();
+      });
+    },
+
+    isValidDate: function(dateStr) {
+      return new Date(dateStr).toString() != 'Invalid Date';
+    },
+
+    // 月份第一天的时间对象
+    getFirstDay: function(date) {
+      var year = date.getFullYear(),
+          month = date.getMonth();
+      return newDate = new Date(year, month, 1);
+    },
+
+    // 月份最后一天的时间对象
+    getLastDay: function(date) {
+      var year = date.getFullYear(),
+          month = date.getMonth();
+      month++;
+
+      if (month > 11) {
+        month = 0;
+        year++;
+      }
+      var newDate = new Date(year, month, 1);
+      return new Date(newDate.getTime() - 24 * 60 * 60 * 1000);
+    },
+
+    getPreMonth: function(date) {
+      var year = date.getFullYear(),
+          month = date.getMonth();
+      month--;
+      if (month < 0) {
+        month = 11;
+        year--;
+      }
+      return new Date(year, month, 1);
+    },
+
+    getNextMonth: function(date) {
+      var year = date.getFullYear(),
+          month = date.getMonth();
+      month++;
+      if (month > 11) {
+        month = 0;
+        year++;
+      }
+      return new Date(year, month, 1);
+    },
+
+    getYMD: function(date) {
+      var yy = date.getFullYear(),
+          mm = date.getMonth() + 1;
+      return date.getFullYear() + '-' + this.setFormat(date.getMonth() + 1) + '-' + this.setFormat(date.getDate());
+    },
+
+    setFormat: function(str) {
+      return (str + '').length == 1 ? ('0' + str + '') : (str + '');
+    }
+  }
+
+  return {
+    set: function($nodes) {
+      $nodes.each(function(idx, node) {
+        new _DatePicker($(node));
+      });
+    }
+  }
+})();
+
+DatePicker.set($('.date-ipt'));
+</script>
+</body>
+</html>

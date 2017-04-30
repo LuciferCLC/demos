@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <title>懒加载</title>
+  <style>
+  body,
+  ul,
+  li,
+  span {
+  	margin: 0;
+  	padding: 0;
+  }
+  li {
+  	list-style: none;
+  	float: left;
+  	margin: 10px;
+  }
+  .clearfix:after {
+    content: '';
+  	display: block;
+  	clear: both;
+  }
+
+  .ct {
+  	width: 1000px;
+  	margin: 0 auto;
+  }
+  .tag {
+  	color: #ccc;
+  	display: block;
+	text-align: center;
+	font-size: 14px;
+	font-style: italic;
+	margin-bottom: 20px;
+    opacity: 0;
+  }
+  </style>
+</head>
+<body>
+<ul class="ct clearfix"></ul>
+<span class="tag">no more...</span>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>
+var Exposure = (function() {
+  function Lazy ($ct, num) {
+  	this.$ct = $ct;
+  	this.num = num;
+  	this.idx = 0;
+  	this.flag = false;
+  	this.bind();
+  	this.check();
+  }
+
+  Lazy.prototype = {
+  	bind: function() {
+  	  var _this = this;
+  	  $(window).on('scroll', function() {	
+  	  	if (_this.idx > 102) {
+  	  	  $('.tag').css({'opacity': 1});
+  	  	  return;
+  	  	}
+  	  	if (_this.flag) return;
+  	  	_this.check();
+  	  });
+  	},
+
+  	check: function() {
+  	  if (this.isShow(this.$ct)) {
+  	  	this.getImg();
+  	  	this.appendHtml();
+  	  }
+  	},
+
+  	isShow: function() {
+  	  var windowHeight = $(window).height(),
+  	  	  scrollTop = $(window).scrollTop(),
+  	  	  offsetTop = $('.tag').offset().top,
+  	  	  nodeHeight = $('.tag').height();
+
+  	  if (windowHeight + scrollTop > offsetTop && offsetTop + nodeHeight > scrollTop) {
+  	  	return true;
+  	  } else {
+  	  	return false;
+  	  }
+  	},
+
+  	getImg: function() {
+  	  this.flag = true;
+  	  this.imgUrl = [];
+
+  	  for(var i = 0; i < this.num; i++) {
+  	  	var url = 'https://unsplash.it/300/450?image=' + this.idx;
+  	  	this.imgUrl.push(url);
+  	  	this.idx++;
+  	  	if (this.idx == 86 || this.idx == 97) this.idx++;
+  	  }
+  	},
+
+  	appendHtml: function() {
+  	  var $oFragment = $(document.createDocumentFragment());
+  	  for(var i = 0; i < this.num; i ++) {
+  	  	var oLi = '<li><img src=' + this.imgUrl[i] + '></li>';
+  	  	$oFragment.append(oLi);
+  	  }
+  	  this.$ct.append($oFragment);
+  	  this.flag = false;
+  	}
+  }
+
+  return {
+    set: function($ct, num) {
+	  $ct.each(function(i, node) {
+	  	new Lazy($(node), num);
+	  });
+    }
+  }
+})();
+
+Exposure.set($('.ct'), 6);
+</script>
+</body>
+</html>
