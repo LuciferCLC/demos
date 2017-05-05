@@ -2,31 +2,46 @@
 <head>
 	<meta charset="UTF-8">
 	<title>PRACTICE</title>
-	<link rel="stylesheet" href="./index.css">
+	<link rel="stylesheet" href="./css/index.css">
 </head>
 <body>
 	<nav>
 		<div class="container clearfix">
 			<a class="logo">
-				<img src="./images/logo.png" alt>
+				<img src="./images/logo-1.png" alt>
 			</a>
 			<ul class="navbar clearfix">
-				<li><a href="#">SERVICES</a></li>
-				<li><a href="#">PORTFOLIO</a></li>
-				<li><a href="#">ABOUT</a></li>
-				<li><a href="#">TEAM</a></li>
-				<li><a href="#">CONTACT</a></li>
+				<li><a class="button" href="#">SERVICES</a></li>
+				<li><a class="button" href="#">PORTFOLIO</a></li>
+				<li><a class="button" href="#">ABOUT</a></li>
+				<li><a class="button" href="#">TEAM</a></li>
+				<li><a class="button" href="#">NEWS</a></li>
+				<li><a class="button" href="#">CONTACT</a></li>
 			</ul>
 		</div>
 	</nav>
 	<header>
+		<div class="scroll">
+			<ul class="img-ct clearfix">
+			 	<li><img src="./img/1.jpg"></li>
+			  	<li><img src="./img/2.jpg"></li>
+			  	<li><img src="./img/3.jpg"></li>
+		    </ul>
+		    <span class="btn btn-pre"><</span>
+		    <span class="btn btn-next">></span>
+		    <ul class="bullet clearfix">
+			  	<li class="active"></li>
+			  	<li></li>
+			  	<li></li>
+			</ul>
+		</div>
 		<div class="container">
 			<h3>Welcome To Our Studio!</h3>
         	<h1>IT'S NICE TO MEET YOU</h1>
-        	<a href="#">TELL ME MORE</a>
+        	<a class="more" href="#">TELL ME MORE</a>
         </div>
 	</header>
-	<section id="services">
+	<section class="services">
 		<div class="container">
 			<div class="row">
 				<h2>SERVICES</h2>
@@ -34,24 +49,24 @@
 			</div>
 			<ul class="row clearfix">
 				<li>
-					<span>&#xe61e;</span>
+					<div class="icon"><img src="./images/购物车.png"></div>
 					<h4>E-Commerce</h4>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
 				</li>
 				<li>
-					<span>&#xe61d;</span>
+					<div class="icon"><img src="./images/笔记本.png"></div>
 					<h4>Responsive Design</h4>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
 				</li>
 				<li>
-					<span>&#xe621;</span>
+					<div class="icon"><img src="./images/锁.png"></div>
 					<h4>Web Security</h4>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
 				</li>
 			</ul>
 		</div>
 	</section>
-	<section id="portfolio">
+	<section class="portfolio">
 		<div class="container">
 			<div class="row">
 				<h2>PORTFOLIO</h2>
@@ -61,7 +76,7 @@
 				<li>
 					<a href="#">
 						<div class="portfolio-hover">
-							<span>&#xe603;</span>
+							<img src="./images/加.png">
 						</div>
 						<img src="./images/roundicons.png" alt>
 					</a>
@@ -73,7 +88,7 @@
 				<li>
 					<a href="#">
 						<div class="portfolio-hover">
-							<span>&#xe603;</span>
+							<img src="./images/加.png">
 						</div>
 						<img src="./images/startup-framework.png" alt>
 					</a>
@@ -85,7 +100,7 @@
 				<li>
 					<a href="#">
 						<div class="portfolio-hover">
-							<span>&#xe603;</span>
+							<img src="./images/加.png">
 						</div>
 						<img src="./images/treehouse.png" alt>
 					</a>
@@ -97,7 +112,7 @@
 				<li>
 					<a href="#">
 						<div class="portfolio-hover">
-							<span>&#xe603;</span>
+							<img src="./images/加.png">
 						</div>
 						<img src="./images/golden.png" alt>
 					</a>
@@ -109,7 +124,7 @@
 				<li>
 					<a href="#">
 						<div class="portfolio-hover">
-							<span>&#xe603;</span>
+							<img src="./images/加.png">
 						</div>
 						<img src="./images/escape.png" alt>
 					</a>
@@ -121,7 +136,7 @@
 				<li>
 					<a href="#">
 						<div class="portfolio-hover">
-							<span>&#xe603;</span>
+							<img src="./images/加.png">
 						</div>
 						<img src="./images/dreams.png" alt>
 					</a>
@@ -133,7 +148,7 @@
 			</ul>
 		</div>
 	</section>
-	<section id="about">
+	<section class="about">
 		<div class="container">
 			<div class="row">
 				<h2>ABOUT</h2>
@@ -200,7 +215,7 @@
 			</ul>
 		</div>
 	</section>
-	<section id="team">
+	<section class="team">
 		<div class="container">
 			<div class="row">
 				<h2>OUR AMAZING TEAM</h2>
@@ -208,33 +223,33 @@
 			</div>
 			<ul class="row clearfix">
 				<li class="team-member">
-					<img src="./images/5.jpg" alt>
+					<img class="tm" src="./images/5.jpg">
 					<h4>Kay Garland</h4>
 					<p>Lead Designer</p>
 					<ul class="clearfix">
-						<li><a href="#"><span>&#xe6e6;</span></a></li>
-						<li><a href="#"><span>&#xe622;</span></a></li>
-						<li><a href="#"><span>&#xe60d;</span></a></li>
+						<li><a href="#"><img src="./images/推特.png"></a></li>
+						<li><a href="#"><img src="./images/脸书.png"></a></li>
+						<li><a href="#"><img src="./images/领英.png"></a></li>
 					</ul>
 				</li>
 				<li class="team-member">
-					<img src="./images/6.jpg" alt>
+					<img class="tm" src="./images/6.jpg">
 					<h4>Larry Parker</h4>
 					<p>Lead Marketer</p>
 					<ul class="clearfix">
-						<li><a href="#"><span>&#xe6e6;</span></a></li>
-						<li><a href="#"><span>&#xe622;</span></a></li>
-						<li><a href="#"><span>&#xe60d;</span></a></li>
+						<li><a href="#"><img src="./images/推特.png"></a></li>
+						<li><a href="#"><img src="./images/脸书.png"></a></li>
+						<li><a href="#"><img src="./images/领英.png"></a></li>
 					</ul>
 				</li>
 				<li class="team-member">
-					<img src="./images/7.jpg" alt>
+					<img class="tm" src="./images/7.jpg">
 					<h4>Diana Pertersen</h4>
 					<p>Lead Developer</p>
 					<ul class="clearfix">
-						<li><a href="#"><span>&#xe6e6;</span></a></li>
-						<li><a href="#"><span>&#xe622;</span></a></li>
-						<li><a href="#"><span>&#xe60d;</span></a></li>
+						<li><a href="#"><img src="./images/推特.png"></a></li>
+						<li><a href="#"><img src="./images/脸书.png"></a></li>
+						<li><a href="#"><img src="./images/领英.png"></a></li>
 					</ul>
 				</li>
 			</ul>
@@ -243,15 +258,27 @@
 			</div>
 		</div>
 	</section>
+	<section class="images">
+		<div class="container">
+			<div class="row">
+				<h2>NEWS</h2>
+				<h3>Lorem ipsum dolor sit amet consectetur.</h3>
+			</div>
+			<ul class="ct clearfix">
+				<li class="item" style="display:none"></li>
+			</ul>
+			<div class="tag">加载更多</div>
+		</div>	
+	</section>
 	<aside>
 		<ul class="container clearfix">
-			<li><a href="#"><img src="./images/envato.jpg" alt></a></li>
-			<li><a href="#"><img src="./images/designmodo.jpg" alt></a></li>
-			<li><a href="#"><img src="./images/themeforest.jpg" alt></a></li>
-			<li><a href="#"><img src="./images/creative-market.jpg" alt></a></li>
+			<li><a href="#"><img src="./images/envato.jpg"></a></li>
+			<li><a href="#"><img src="./images/designmodo.jpg"></a></li>
+			<li><a href="#"><img src="./images/themeforest.jpg"></a></li>
+			<li><a href="#"><img src="./images/creative-market.jpg"></a></li>
 		</ul>
 	</aside>
-	<section id="contact">
+	<section class="contact">
 		<div class="container">
 			<div class="row">
 				<h2>CONTACT US</h2>
@@ -276,9 +303,9 @@
 		<div class="container clearfix">
 			<p>Copyright © Your Website 2014</p>
 			<ul class="mid">
-				<li><a href="#"><span>&#xe6e6;</span></a></li>
-				<li><a href="#"><span>&#xe622;</span></a></li>
-				<li><a href="#"><span>&#xe60d;</span></a></li>
+				<li><a href="#"><img src="./images/推特.png"></a></li>
+				<li><a href="#"><img src="./images/脸书.png"></a></li>
+				<li><a href="#"><img src="./images/领英.png"></a></li>
 			</ul>
 			<ul class="right">
 				<li><a href="#">Privacy Policy</a></li>
@@ -286,5 +313,6 @@
 			</ul>
 		</div>
 	</footer>
+	<script data-main="./dist/js/index.merge.min.js" src="./js/lib/require.js"></script>
 </body>
 </html>

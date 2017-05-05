@@ -80,63 +80,119 @@ p {
 ::selection {
     background: #fed136;
 }
-@font-face {
-  font-family: 'iconfont';  /* project id 263729 */
-  src: url('//at.alicdn.com/t/font_5zsezow3v2cvj9k9.eot');
-  src: url('//at.alicdn.com/t/font_5zsezow3v2cvj9k9.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_5zsezow3v2cvj9k9.woff') format('woff'),
-  url('//at.alicdn.com/t/font_5zsezow3v2cvj9k9.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_5zsezow3v2cvj9k9.svg#iconfont') format('svg');
-}
-body span {
-	display: inline-block;
-	font-family: "iconfont";
-	font-size: 40px;
-	color: #000;
-}
 
 nav {
 	width: 100%;
-	background: #222;
-    padding: 10px 0;
+	background: rgba(34, 34, 34, 0);
+    padding-top: 10px;
+    padding-bottom: 10px; 
     position: fixed;
     z-index: 999;
+    transition: all .3s;
 }
-.logo {
+nav .logo {
 	height: 50px;
 	line-height: 20px;
 	float: left;
 	margin-left: -15px;
     padding: 15px 15px;
 }
-.navbar {
+nav .navbar {
 	float: right;
 	margin-right: -15px;
 	margin-top: 5px;
 	padding-left: 0;
     
 }
-.navbar li a {
+nav .button {
     padding: 10px 15px;
     font-size: 15px;
     font-weight: 400;
     letter-spacing: 1px;
     line-height: 20px;
     color: #fff;
+    border-radius: 3px;
 }
-.navbar li a:hover {
+nav .button:hover {
 	color: #fed136;
 }
+nav .button.act {
+    background: #fed136;
+}
+nav .button.act:hover {
+    color: #fff;
+    background: #f9c20c;
+}
+
 header {
+    width: 100%;
 	height: 757px;
-	background: url(./images/header-bg.jpg) no-repeat center center;
-    background-size: cover;
     text-align: center;
     color: #fff;
+    position: relative;
+}
+header .scroll {
+    width: 100%;
+    height: 757px;
+    overflow: hidden;
+    float: left;
+    position: relative;
+}
+header .img-ct {
+    position: absolute;
+}
+header .img-ct img {
+    width: 1350px;
+    height: 757px;
+}
+header .btn {
+    display: block;
+    width: 30px;
+    height: 30px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.5;
+    background: rgba(0, 0, 0, .6);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    user-select: none;
+    cursor: pointer;
+}
+header .btn:hover {
+    background: #ccc;
+}
+header .btn-pre {
+    left: 2%;
+}
+header .btn-next {
+    right: 2%;
+}
+header .bullet {
+    position: absolute;
+    bottom: 4%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+header .bullet>li {
+    width: 30px;
+    height: 6px;
+    background: rgba(0, 0, 0, .6);
+    margin-left: 6px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+header .bullet>li.active {
+background: #ccc;
 }
 header .container {
 	padding-top: 300px;
-    padding-bottom: 200px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 header h3 {
 	font-style: italic;
@@ -151,7 +207,7 @@ header h1 {
     line-height: 75px;
     margin-bottom: 50px;
 }
-header a {
+header .more {
 	display: inline-block;
 	color: #fff;
     background-color: #fed136;
@@ -163,70 +219,79 @@ header a {
 header a:hover {
 	background-color: #fec503;
 }
-#services ul li {
+
+.services .row li {
 	width: 33.33333333%;
 	padding-right: 15px;
     padding-left: 15px;
 }
-#services ul li span {
+.services .row .icon {
     width: 100px;
     height: 100px;
-    font-size: 4em;
-    line-height: 1.7;
-    border-radius: 100%;
+    border-radius: 50%;
     background: #fed136;
+    padding-top: 30px;
+    margin: 0 auto;
 }
-#services ul li h4 {
+.services .icon img {
+    width: 40px;
+}
+.services .row h4 {
 	margin: 15px 0;
 }
-#services ul li p {
+.services .row p {
 	color: #777;
 	margin-bottom: 10px;
 }
-#portfolio {
+
+.portfolio {
 	background-color: #f7f7f7;
 }
-#portfolio ul li {
+.portfolio .row li {
 	margin-bottom: 30px;
 	width: 33.33333333%;
 	padding-right: 15px;
     padding-left: 15px;
 }
-#portfolio ul li a {
+.portfolio .row a {
 	height: 260px;
 }
-#portfolio ul li a img {
+.portfolio .row img {
 	width: 360px;
 }
-#portfolio ul li a .portfolio-hover {
+.portfolio .row .portfolio-hover {
 	position: absolute;
 	width: 360px;
     height: 260px;
     opacity: 0;
     transition: all .3s;
 }
-#portfolio ul li a .portfolio-hover span {
-	color: #fff;
-	font-size: 80px;
-	margin-top: 70px;
+.portfolio .portfolio-hover img {
+	width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
-#portfolio ul li a .portfolio-hover:hover {
+.portfolio .row .portfolio-hover:hover {
 	background: #fed136;
 	opacity: .9;
 }
-#portfolio ul li .caption {
+.portfolio .row .caption {
 	padding: 25px;
 	background: #fff;
 }
-#portfolio ul li .caption p {
+.portfolio .caption p {
 	font-style: italic;
     font-size: 16px;
 	color: #777;
 }
-#about ul {
+
+.about ul {
 	position: relative;
 }
-#about ul:before {
+.about ul:before {
 	content: "";
 	top: 0;
     bottom: 0;
@@ -236,15 +301,15 @@ header a:hover {
     left: 50%;
     margin-left: -1px;
 }
-#about ul li {
+.about ul li {
 	height: 170px;
 	margin-bottom: 130px;
 	float: none;
 }
-#about ul li.last {
+.about ul li.last {
 	margin-bottom: 0;
 }
-#about ul li .timeline {
+.about ul li .timeline {
 	width: 170px;
     height: 170px;
     border: 7px solid #f1f1f1;
@@ -253,55 +318,69 @@ header a:hover {
     left: 50%;
     margin-left: -85px;
 }
-#about ul li div {
+.about ul li div {
 	width: 41%;
 }
-#about ul li .left {
+.about ul li .left {
     float: left;
     text-align: right;
     padding: 0 20px 20px 100px;
 }
-#about ul li .right {
+.about ul li .right {
 	float: right;
     text-align: left;
     padding: 0 100px 20px 20px;
 }
-#about ul li h4.timeline {
+.about ul li h4.timeline {
 	background: #fed136;
 	padding-top: 40px;
 	color: #fff;
 }
-#team {
+.team {
 	background: #f1f1f1;
 }
-#team ul .team-member {
+.team ul .team-member {
 	width: 33.33333333%;
 	margin-bottom: 50px;
 }
-#team ul li img {
+.team ul li .tm {
 	border: 7px solid #fff;
 	border-radius: 50%;
 	margin: 0 auto;
 }
-#team ul li h4 {
+.team ul li h4 {
 	margin-top: 25px;
     margin-bottom: 0;
 }
-#team ul li p {
+.team ul li p {
 	margin: 0 0 10px;
 }
-#team ul li ul {
-	text-align: center;
+.team ul li ul {
 	padding-left: 120px;
 }
-#team ul li ul li {
+.team ul li ul li {
 	display: inline-block;
     padding-right: 5px;
     padding-left: 5px;
 }
-#team .last {
+.team ul li ul li a{
+    background: #000;
+    border-radius: 50%;
+    padding: 10px; 
+    transition: all .3s;
+}
+.team ul li ul li a:hover {
+    background: #fed136;
+}
+.team ul li ul li a img {
+    width: 20px;
+}
+.team .last {
 	width: 66.66666667%;
 	margin-left: 16.66666667%;
+}
+aside {
+    background: #f1f1f1;
 }
 aside ul li {
 	width: 25%;
@@ -309,11 +388,11 @@ aside ul li {
 aside ul li a img {
 	margin: 50px auto;
 }
-#contact {
-	background: url(./images/map-image.png) no-repeat center;
+.contact {
+	background: url(../images/map-image.png) no-repeat center;
 	background-color: #222;
 }
-#contact h2 {
+.contact h2 {
 	color: #fff;
 }
 #contactForm ul,
@@ -374,6 +453,18 @@ footer .mid {
 footer .mid li {
 	margin-right: 15px;
 }
+footer .mid li a {
+    background: #000;
+    border-radius: 50%;
+    padding: 10px;
+    transition: all .3s;
+}
+footer .mid li a:hover {
+    background: #fed136;
+}
+footer .mid li a img {
+    width: 20px;
+}
 footer .right {
 	width: 33.333333%;
 	float: left;
@@ -388,7 +479,63 @@ footer .right a {
 footer .right a:hover {
 	text-decoration: underline;
 }
-#team ul li ul li a span:hover,
+.team ul li ul li a span:hover,
 footer .mid li a span:hover {
 	color: #fec503;
+}
+
+.go-top {
+    background: #555;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px;
+    position: fixed;
+    bottom: 5%;
+    right: 3%;
+    cursor: pointer;
+}
+
+.images {
+    text-align: center;
+}
+.ct {
+    width: 990px;
+    position: relative;
+    margin: 0 auto;
+}
+.item {
+    width: 320px;
+    margin: 5px;
+    padding: 0 0 10px 0;
+    position: absolute;
+    border: 1px solid #dfdfdf;
+}
+.item img {
+    margin: 10px;
+    width: 300px;
+}
+
+.item h4 {
+    height: 25px;
+    margin: 0 12px;
+    border-bottom: 1px solid #dbdbdb;
+}
+.item p {
+    font-size: 12px;
+    line-height: 1.8;
+    margin: 10px 15px 0;
+    color: #aaa;
+}
+
+.tag {
+    color: #fff;
+    display: inline-block;
+    padding: 10px;
+    margin-top: 20px;
+    background: #fed136;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.tag:hover {
+    background: #fec503;
 }
