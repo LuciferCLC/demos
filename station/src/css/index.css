@@ -528,6 +528,7 @@ footer .mid li a span:hover {
 }
 
 .tag {
+    width: 100%;
     color: #fff;
     display: inline-block;
     padding: 10px;
