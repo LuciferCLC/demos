@@ -528,10 +528,11 @@ footer .mid li a span:hover {
 }
 
 .tag {
+    width: 100%;
     color: #fff;
     display: inline-block;
     padding: 10px;
-    margin-top: 20px;
+    margin-top: 40px;
     background: #fed136;
     border-radius: 5px;
     cursor: pointer;
