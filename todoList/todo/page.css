@@ -1,0 +1,196 @@
+[v-cloak] {
+    display: none;
+}
+.clearfix:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+body{
+    font: message-box;
+    font-size: 16px;
+    background: #cdcdcd;
+    margin: 0;
+    padding: 0;
+}
+
+#signIn-signUp {
+    width: 94%;
+    border-radius: 5px;
+    box-shadow: 0 1px 5px #8a9ba8;
+    background: #fff;
+    margin: -28px auto 0;
+    max-width: 360px;
+    min-height: 300px!important;
+    min-width: 300px;
+    padding: 35px 20px 20px;
+    margin-top: 15%;   
+}
+#signIn-signUp .title{
+    font-size: 20px;
+    color: #424f59;
+    margin: 5px 0 30px;
+    font-weight: 300;
+    text-align: center;
+}
+#signIn-signUp .ipt {
+    width: 100%;
+    height: 40px;
+    font-size: 16px;
+    color: #424f59;
+    border: 1px solid #424f59;
+    border-radius: 4px;
+    padding: 0 0 0 20px;
+    margin-bottom: 18px;
+    box-shadow: inset 0 1px 1px #f2f2f2;
+    box-sizing: border-box;
+}
+.formActions .btn {
+    width: 100%;
+    height: 46px;
+    color: #fff;
+    font-size: 20px;
+    padding: 8px 0;
+    margin-top: 10px;
+    background: #0996f8;
+    border: none;
+    border-radius: 4px;
+    transition: all .3s;
+    cursor: pointer;
+}
+.formActions .btn:hover {
+    background: #0670cc;
+}
+.link {
+    color: #0996f8;
+    font-size: 14px;
+    font-weight: 300;
+    padding: 1px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.link:hover {
+    text-decoration: underline;
+}
+.signUp .link {
+    text-align: center;
+}
+.login .link {
+    text-align: right;
+}
+
+.header {
+    background: rgba(47, 47, 47, 0.98); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.newTask {
+    width: 500px;
+    padding: 0 10px; 
+}
+.newTask {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.newTask label {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    width: 100px;
+    color: #ddd;
+    font-size: 24px;
+    cursor: pointer;
+}
+.newTask input {
+    float: right;
+    width: 60%;
+    height: 24px;
+    text-indent: 10px;
+    border-radius: 5px;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.24), 0 1px 6px rgba(0,0,0,0.45) inset;
+    border: none;
+}
+.user {
+    color: #eee;
+    font-size: 14px;
+    display: flex;
+    margin-left: 20px;
+}
+.user .name {
+    line-height: 1.5;
+    margin-right: 10px;
+    color: #fff;
+    cursor: pointer;
+}
+.user .name:hover {
+    text-decoration: underline;
+}
+.user .logout {
+    color: #ccc;
+    cursor: pointer;
+}
+ol {
+    margin: 0 auto;
+    width: 600px;
+    padding: 0 10px;
+}
+ol li {
+    font-size: 15px;
+    background: #fff;
+    border-left: 4px solid #2eaeb2;
+    border-radius: 10px 0 0 10px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+    margin: 5px;
+    list-style: none;
+    position: relative;
+}
+.circle {
+    border: 1px solid #777;
+    border-radius: 50%;
+    padding: 3px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 8px;
+    transform: translateY(-50%);
+}
+.circle span {
+    display: block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+.circle .done {
+    background: #ccc;
+}
+.main {
+    width: 84%;
+    float: left;
+    margin: 10px 5px 5px 10px;
+    margin-left: 45px;
+}
+.main .todo {
+    width: 100%;
+    margin-bottom: 5px;
+    overflow: hidden; 
+    word-wrap: break-word;
+}
+.main .time {
+    font-size: 13px;
+    float: right;
+}
+.remove {
+    width: 7%;
+    text-align: center;
+    line-height: 2;
+    background: #f00;
+    font-size: 14px;
+    color: #fff;
+    float: right;
+    transition: all .3s;
+    cursor: pointer;
+}
+.remove:hover {
+    opacity: .5;
+}
