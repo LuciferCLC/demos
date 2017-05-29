@@ -26578,8 +26578,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-var APP_ID = '9ohbOHuYpLe0PakxeWUkHzXG-gzGzoHsz'
-var APP_KEY = 'f6vUzA4dS9sQ0rP2eJ5II1cr'
+var APP_ID = '5Wg4JIJNf7TRvDPPHXw0bku4-gzGzoHsz'
+var APP_KEY = 'At89yfnpcF7eMG5xFbIEfQAd'
 __WEBPACK_IMPORTED_MODULE_1_leancloud_storage___default.a.init({
     appId: APP_ID,
     appKey: APP_KEY
