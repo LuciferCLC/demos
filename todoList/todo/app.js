@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import AV from 'leancloud-storage'
 
-var APP_ID = '9ohbOHuYpLe0PakxeWUkHzXG-gzGzoHsz'
-var APP_KEY = 'f6vUzA4dS9sQ0rP2eJ5II1cr'
+var APP_ID = '5Wg4JIJNf7TRvDPPHXw0bku4-gzGzoHsz'
+var APP_KEY = 'At89yfnpcF7eMG5xFbIEfQAd'
 AV.init({
     appId: APP_ID,
     appKey: APP_KEY
