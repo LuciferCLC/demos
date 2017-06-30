@@ -1,5 +1,5 @@
 /*
-	首页功能
+    首页功能
 */
 
 define(["jquery", "com/Carousel", "com/GoTop", "com/Exposure"], function($, Carousel, GoTop, Exposure) {
@@ -31,7 +31,7 @@ define(["jquery", "com/Carousel", "com/GoTop", "com/Exposure"], function($, Caro
                     $btns.eq(i).find('a').removeClass('act');
                 }
             }
-            
+
         });
 
         $btns.on('click', function() {
@@ -41,7 +41,7 @@ define(["jquery", "com/Carousel", "com/GoTop", "com/Exposure"], function($, Caro
             });
         });
     }
-    
+
 
     function isShow($node) {
         var winHeight = $(window).height();
