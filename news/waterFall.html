@@ -81,13 +81,13 @@
 				}
 				this.flag = true;
 
-				this.start();
+				this.start(20);
 				this.bind();
 			}
 		
 		waterFull.prototype = {
-			start:function() {
-				this.getNews();
+			start:function(num) {
+				this.getNews(num);
 				this.flag = false;
 			},
 
@@ -113,15 +113,16 @@
 				});
 			},
 
-			getNews: function() {
+			getNews: function(num) {
 				var _this = this;
+				var count = num || this.pageCount;
 				$.ajax({
 					url: 'https://platform.sina.com.cn/slide/album_tech',
 					dataType: 'jsonp',
 					jsonp: 'jsoncallback',
 					data: {
 						app_key: '1271687855',
-						num: _this.pageCount,
+						num: count,
 						page: _this.page
 					}
 				}).done(function(ret) {
